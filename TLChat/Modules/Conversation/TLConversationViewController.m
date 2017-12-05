@@ -1,6 +1,6 @@
 
 #import "TLConversationViewController.h"
-
+#import "ChatViewController.h"
 #import <AFNetworking.h>
 
 
@@ -8,6 +8,7 @@
 @interface TLConversationViewController ()
 
 @property (nonatomic, strong) UIImageView *scrollTopView;
+@property (nonatomic,strong) NSMutableArray *cellData;
 
 
 @end
@@ -16,10 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"微信"];
+    [self.navigationItem setTitle:@"Test"];
+    
     
     [self p_initUI];        // 初始化界面UI
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+    //init cell date
+    self.cellData  = [[NSMutableArray alloc] initWithObjects:@"李敏宝宝", @"凯神",@"总天大佬", nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,6 +62,43 @@
         _scrollTopView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"conv_wechat_icon"]];
     }
     return _scrollTopView;
+}
+
+//init UITableViewCell
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifier = @"总天大佬";
+    //create reusable cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    //if cell not exist then init cell with default style
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    [cell.textLabel setText:[self.cellData objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.cellData count];
+}
+
+//handle cell select event
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //get chat username
+    NSString *cellText = [[tableView cellForRowAtIndexPath:indexPath].textLabel text];
+    //init chate viewcontroller
+    ChatViewController *chatController = [[ChatViewController alloc] init];
+    chatController.chatName = cellText;
+    //hide bottom bar
+    [self setHidesBottomBarWhenPushed:YES];
+    //display chat view
+    [self.navigationController pushViewController:chatController animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+    
+    [self setHidesBottomBarWhenPushed:NO];
+
+//    chatController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    [self presentViewController:chatController animated:YES completion:nil];
+    
 }
 
 @end
