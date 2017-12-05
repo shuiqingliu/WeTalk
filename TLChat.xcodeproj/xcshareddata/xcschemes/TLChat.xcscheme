@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0900"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,7 +17,7 @@
                BlueprintIdentifier = "C2097EE21C52326500163B5C"
                BuildableName = "TLChat.app"
                BlueprintName = "TLChat"
-               ReferencedContainer = "container:IMChat.xcodeproj">
+               ReferencedContainer = "container:TLChat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,7 @@
                BlueprintIdentifier = "C2097EFB1C52326500163B5C"
                BuildableName = "TLChatTests.xctest"
                BlueprintName = "TLChatTests"
-               ReferencedContainer = "container:IMChat.xcodeproj">
+               ReferencedContainer = "container:TLChat.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,7 +46,7 @@
                BlueprintIdentifier = "C2097F061C52326500163B5C"
                BuildableName = "TLChatUITests.xctest"
                BlueprintName = "TLChatUITests"
-               ReferencedContainer = "container:IMChat.xcodeproj">
+               ReferencedContainer = "container:TLChat.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -56,7 +56,7 @@
             BlueprintIdentifier = "C2097EE21C52326500163B5C"
             BuildableName = "TLChat.app"
             BlueprintName = "TLChat"
-            ReferencedContainer = "container:IMChat.xcodeproj">
+            ReferencedContainer = "container:TLChat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,7 +80,7 @@
             BlueprintIdentifier = "C2097EE21C52326500163B5C"
             BuildableName = "TLChat.app"
             BlueprintName = "TLChat"
-            ReferencedContainer = "container:IMChat.xcodeproj">
+            ReferencedContainer = "container:TLChat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,7 +99,7 @@
             BlueprintIdentifier = "C2097EE21C52326500163B5C"
             BuildableName = "TLChat.app"
             BlueprintName = "TLChat"
-            ReferencedContainer = "container:IMChat.xcodeproj">
+            ReferencedContainer = "container:TLChat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

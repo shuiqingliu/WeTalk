@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -305,9 +305,9 @@
 		C2097EDA1C52326500163B5C = {
 			isa = PBXGroup;
 			children = (
-				C2097EE51C52326500163B5C /* IMdev */,
-				C2097EFF1C52326500163B5C /* IMdevChatTests */,
-				C2097F0A1C52326500163B5C /* IMdevUITests */,
+				C2097EE51C52326500163B5C /* TLChat */,
+				C2097EFF1C52326500163B5C /* TLChatTests */,
+				C2097F0A1C52326500163B5C /* TLChatUITests */,
 				C2097EE41C52326500163B5C /* Products */,
 				445936A105939B47A48F4E03 /* Frameworks */,
 				332C50BE31310AC509A54EDA /* Pods */,
@@ -324,7 +324,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C2097EE51C52326500163B5C /* IMdev */ = {
+		C2097EE51C52326500163B5C /* TLChat */ = {
 			isa = PBXGroup;
 			children = (
 				71EA50221FD41C54007EAE1A /* Info.plist */,
@@ -333,7 +333,7 @@
 				C2D7C9141F72470400648CED /* Modules */,
 				C2097EE61C52326500163B5C /* Supporting Files */,
 			);
-			path = IMdev;
+			path = TLChat;
 			sourceTree = "<group>";
 		};
 		C2097EE61C52326500163B5C /* Supporting Files */ = {
@@ -345,22 +345,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C2097EFF1C52326500163B5C /* IMdevChatTests */ = {
+		C2097EFF1C52326500163B5C /* TLChatTests */ = {
 			isa = PBXGroup;
 			children = (
 				C2097F001C52326500163B5C /* TLChatTests.m */,
 				C2097F021C52326500163B5C /* Info.plist */,
 			);
-			path = IMdevChatTests;
+			path = TLChatTests;
 			sourceTree = "<group>";
 		};
-		C2097F0A1C52326500163B5C /* IMdevUITests */ = {
+		C2097F0A1C52326500163B5C /* TLChatUITests */ = {
 			isa = PBXGroup;
 			children = (
 				C2097F0B1C52326500163B5C /* TLChatUITests.m */,
 				C2097F0D1C52326500163B5C /* Info.plist */,
 			);
-			path = IMdevUITests;
+			path = TLChatUITests;
 			sourceTree = "<group>";
 		};
 		C23EE3C81F738E500069885F /* Frameworks */ = {
@@ -764,11 +764,12 @@
 		C2097EDB1C52326500163B5C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "";
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "李伯坤";
 				TargetAttributes = {
 					C2097EE21C52326500163B5C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 8ZE6MPGQ6N;
 						ProvisioningStyle = Automatic;
 					};
 					C2097EFB1C52326500163B5C = {
@@ -781,8 +782,8 @@
 					};
 				};
 			};
-			buildConfigurationList = C2097EDE1C52326500163B5C /* Build configuration list for PBXProject "IMChat" */;
-			compatibilityVersion = "Xcode 8.0";
+			buildConfigurationList = C2097EDE1C52326500163B5C /* Build configuration list for PBXProject "TLChat" */;
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -962,21 +963,13 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -999,7 +992,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1015,21 +1008,13 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1046,7 +1031,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1063,7 +1048,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y4CK7LDDT8;
+				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
@@ -1073,7 +1058,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bupt917.IM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lbk.TLChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1090,7 +1075,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y4CK7LDDT8;
+				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
@@ -1100,7 +1085,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bupt917.IM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lbk.TLChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1159,7 +1144,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C2097EDE1C52326500163B5C /* Build configuration list for PBXProject "IMChat" */ = {
+		C2097EDE1C52326500163B5C /* Build configuration list for PBXProject "TLChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C2097F0E1C52326500163B5C /* Debug */,

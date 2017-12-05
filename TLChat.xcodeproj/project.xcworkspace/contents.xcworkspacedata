@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/qingliu/IM/IMChat.xcodeproj">
+      location = "self:TLChat.xcodeproj">
    </FileRef>
 </Workspace>
