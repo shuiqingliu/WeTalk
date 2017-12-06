@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< Updated upstream
 		714F231F1FD40D2F004786A6 /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F231E1FD40D2E004786A6 /* NSFileManager+TLChat.m */; };
 		714F23221FD41406004786A6 /* NSDate+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 714F23211FD41406004786A6 /* NSDate+TLChat.m */; };
 		717D138B1FD585DA00B7ED9E /* TLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717D138A1FD585DA00B7ED9E /* TLTableViewController.m */; };
@@ -15,6 +16,17 @@
 		83A72D4B1FD7B7E100C8D657 /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D4A1FD7B7E100C8D657 /* TLConversationViewController.m */; };
 		83A72D501FD7B7EA00C8D657 /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D4F1FD7B7EA00C8D657 /* TLFriendsViewController.m */; };
 		83A72D541FD7B8E000C8D657 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D531FD7B8E000C8D657 /* ChatViewController.m */; };
+=======
+		71EA50231FD41C54007EAE1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71EA50221FD41C54007EAE1A /* Info.plist */; };
+		83396ED11FD6C7390022C9E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83396ED01FD6C7390022C9E1 /* Assets.xcassets */; };
+		83396ED51FD6D0040022C9E1 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83396ED41FD6D0040022C9E1 /* ChatViewController.m */; };
+		83A245031FD6ADCB00F48D1A /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A245021FD6ADCB00F48D1A /* TLConversationViewController.m */; };
+		83A245091FD6AE8C00F48D1A /* NSDate+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A245061FD6AE8B00F48D1A /* NSDate+TLChat.m */; };
+		83A2450A1FD6AE8C00F48D1A /* NSFileManager+TLChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A245081FD6AE8B00F48D1A /* NSFileManager+TLChat.m */; };
+		83A2450F1FD6AF7300F48D1A /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A2450E1FD6AF7300F48D1A /* TLFriendsViewController.m */; };
+		83A245111FD6B05B00F48D1A /* TLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A245101FD6B05B00F48D1A /* TLMineViewController.m */; };
+		83A245191FD6B1DB00F48D1A /* TLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A245181FD6B1DB00F48D1A /* TLTableViewController.m */; };
+>>>>>>> Stashed changes
 		88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */; };
 		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
@@ -89,6 +101,7 @@
 
 /* Begin PBXFileReference section */
 		28C098D007CC6D63F81358AB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		714F231D1FD40D20004786A6 /* NSFileManager+TLChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TLChat.h"; sourceTree = "<group>"; };
 		714F231E1FD40D2E004786A6 /* NSFileManager+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TLChat.m"; sourceTree = "<group>"; };
 		714F23201FD41401004786A6 /* NSDate+TLChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+TLChat.h"; sourceTree = "<group>"; };
@@ -105,6 +118,25 @@
 		83A72D4F1FD7B7EA00C8D657 /* TLFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendsViewController.m; sourceTree = "<group>"; };
 		83A72D521FD7B8E000C8D657 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		83A72D531FD7B8E000C8D657 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+=======
+		717D13931FD58F8F00B7ED9E /* TLMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMineViewController.h; sourceTree = "<group>"; };
+		71EA50221FD41C54007EAE1A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		83396ED01FD6C7390022C9E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		83396ED31FD6D0040022C9E1 /* ChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		83396ED41FD6D0040022C9E1 /* ChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		83A245011FD6ADCB00F48D1A /* TLConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationViewController.h; sourceTree = "<group>"; };
+		83A245021FD6ADCB00F48D1A /* TLConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversationViewController.m; sourceTree = "<group>"; };
+		83A245051FD6AE8B00F48D1A /* NSDate+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TLChat.h"; sourceTree = "<group>"; };
+		83A245061FD6AE8B00F48D1A /* NSDate+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TLChat.m"; sourceTree = "<group>"; };
+		83A245071FD6AE8B00F48D1A /* NSFileManager+TLChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+TLChat.h"; sourceTree = "<group>"; };
+		83A245081FD6AE8B00F48D1A /* NSFileManager+TLChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+TLChat.m"; sourceTree = "<group>"; };
+		83A2450D1FD6AF7300F48D1A /* TLFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendsViewController.h; sourceTree = "<group>"; };
+		83A2450E1FD6AF7300F48D1A /* TLFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFriendsViewController.m; sourceTree = "<group>"; };
+		83A245101FD6B05B00F48D1A /* TLMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineViewController.m; sourceTree = "<group>"; };
+		83A245171FD6B1DB00F48D1A /* TLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewController.h; sourceTree = "<group>"; };
+		83A245181FD6B1DB00F48D1A /* TLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewController.m; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		99FC90F8BB6CC8FC216CB6EE /* Pods-TLChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.release.xcconfig"; sourceTree = "<group>"; };
 		ABEB57A4807F75774E29D2E1 /* Pods-TLChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLChat/Pods-TLChat.debug.xcconfig"; sourceTree = "<group>"; };
 		C2097EE31C52326500163B5C /* TLChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,14 +271,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		714F231C1FD40CB7004786A6 /* DataUtilities */ = {
+		717D13911FD58F6200B7ED9E /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				714F23201FD41401004786A6 /* NSDate+TLChat.h */,
-				714F23211FD41406004786A6 /* NSDate+TLChat.m */,
-				714F231D1FD40D20004786A6 /* NSFileManager+TLChat.h */,
-				714F231E1FD40D2E004786A6 /* NSFileManager+TLChat.m */,
+				717D13921FD58F7000B7ED9E /* TLMineViewController */,
 			);
+<<<<<<< Updated upstream
 			path = DataUtilities;
 			sourceTree = "<group>";
 		};
@@ -289,19 +319,75 @@
 			isa = PBXGroup;
 			children = (
 				83A72D4D1FD7B7EA00C8D657 /* FriendsViewController */,
+=======
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		717D13921FD58F7000B7ED9E /* TLMineViewController */ = {
+			isa = PBXGroup;
+			children = (
+				717D13931FD58F8F00B7ED9E /* TLMineViewController.h */,
+				83A245101FD6B05B00F48D1A /* TLMineViewController.m */,
+			);
+			path = TLMineViewController;
+			sourceTree = "<group>";
+		};
+		83396ED21FD6CFD20022C9E1 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				83396ED31FD6D0040022C9E1 /* ChatViewController.h */,
+				83396ED41FD6D0040022C9E1 /* ChatViewController.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		83A245001FD6ADCB00F48D1A /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				83A245011FD6ADCB00F48D1A /* TLConversationViewController.h */,
+				83A245021FD6ADCB00F48D1A /* TLConversationViewController.m */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		83A245041FD6AE8B00F48D1A /* DataUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				83A245051FD6AE8B00F48D1A /* NSDate+TLChat.h */,
+				83A245061FD6AE8B00F48D1A /* NSDate+TLChat.m */,
+				83A245071FD6AE8B00F48D1A /* NSFileManager+TLChat.h */,
+				83A245081FD6AE8B00F48D1A /* NSFileManager+TLChat.m */,
+			);
+			path = DataUtilities;
+			sourceTree = "<group>";
+		};
+		83A2450B1FD6AF7300F48D1A /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				83A2450C1FD6AF7300F48D1A /* FriendsViewController */,
+>>>>>>> Stashed changes
 			);
 			path = Friends;
 			sourceTree = "<group>";
 		};
+<<<<<<< Updated upstream
 		83A72D4D1FD7B7EA00C8D657 /* FriendsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				83A72D4E1FD7B7EA00C8D657 /* TLFriendsViewController.h */,
 				83A72D4F1FD7B7EA00C8D657 /* TLFriendsViewController.m */,
+=======
+		83A2450C1FD6AF7300F48D1A /* FriendsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83A2450D1FD6AF7300F48D1A /* TLFriendsViewController.h */,
+				83A2450E1FD6AF7300F48D1A /* TLFriendsViewController.m */,
+>>>>>>> Stashed changes
 			);
 			path = FriendsViewController;
 			sourceTree = "<group>";
 		};
+<<<<<<< Updated upstream
 		83A72D511FD7B8E000C8D657 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +395,15 @@
 				83A72D531FD7B8E000C8D657 /* ChatViewController.m */,
 			);
 			path = Chat;
+=======
+		83A245161FD6B1DB00F48D1A /* TLTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83A245171FD6B1DB00F48D1A /* TLTableViewController.h */,
+				83A245181FD6B1DB00F48D1A /* TLTableViewController.m */,
+			);
+			path = TLTableViewController;
+>>>>>>> Stashed changes
 			sourceTree = "<group>";
 		};
 		C2097EDA1C52326500163B5C = {
@@ -336,6 +431,7 @@
 		C2097EE51C52326500163B5C /* TLChat */ = {
 			isa = PBXGroup;
 			children = (
+				83396ED01FD6C7390022C9E1 /* Assets.xcassets */,
 				71EA50221FD41C54007EAE1A /* Info.plist */,
 				C2EAC3001F71004300BA2ED3 /* TLKitExtensions */,
 				C2D7C8851F72107D00648CED /* AppControlCenter */,
@@ -413,7 +509,7 @@
 		C2D7C8B01F72464A00648CED /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				717D13881FD5859900B7ED9E /* TLTableViewController */,
+				83A245161FD6B1DB00F48D1A /* TLTableViewController */,
 				C2D7C8E01F72464A00648CED /* TLViewController */,
 			);
 			path = Base;
@@ -433,7 +529,7 @@
 		C2D7C8F61F7246CC00648CED /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				714F231C1FD40CB7004786A6 /* DataUtilities */,
+				83A245041FD6AE8B00F48D1A /* DataUtilities */,
 				C2D7C9031F7246CC00648CED /* NetworkUtilities */,
 				C2D7C9071F7246CC00648CED /* UIUtilities */,
 			);
@@ -471,9 +567,15 @@
 		C2D7C9141F72470400648CED /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				83A72D511FD7B8E000C8D657 /* Chat */,
 				83A72D4C1FD7B7EA00C8D657 /* Friends */,
 				83A72D481FD7B7E100C8D657 /* Conversation */,
+=======
+				83396ED21FD6CFD20022C9E1 /* Chat */,
+				83A2450B1FD6AF7300F48D1A /* Friends */,
+				83A245001FD6ADCB00F48D1A /* Conversation */,
+>>>>>>> Stashed changes
 				717D13911FD58F6200B7ED9E /* Mine */,
 				C2D7C9B71F72470400648CED /* Common */,
 				C2D7CA861F72470400648CED /* Launcher */,
@@ -779,7 +881,7 @@
 				TargetAttributes = {
 					C2097EE21C52326500163B5C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 8ZE6MPGQ6N;
+						DevelopmentTeam = Y4CK7LDDT8;
 						ProvisioningStyle = Automatic;
 					};
 					C2097EFB1C52326500163B5C = {
@@ -821,6 +923,7 @@
 				C2D7CB4C1F72470400648CED /* Common.xcassets in Resources */,
 				C2D7CB9B1F72470400648CED /* Launch.xcassets in Resources */,
 				C2D7CB4D1F72470400648CED /* main.js in Resources */,
+				83396ED11FD6C7390022C9E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,11 +996,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A245091FD6AE8C00F48D1A /* NSDate+TLChat.m in Sources */,
 				C2D7CC231F726D4900648CED /* TLUserGroup.m in Sources */,
 				C2D7CC2A1F726D7B00648CED /* TLGroup.m in Sources */,
 				C2D7CC211F726D4900648CED /* TLUserChatSetting.m in Sources */,
 				C2D7CC141F726D0900648CED /* TLRootProxy.m in Sources */,
-				714F23221FD41406004786A6 /* NSDate+TLChat.m in Sources */,
+				83A245111FD6B05B00F48D1A /* TLMineViewController.m in Sources */,
 				C2D7CB131F72470400648CED /* TLLoginViewController.m in Sources */,
 				C2D7CBA01F72470500648CED /* TLSDKManager.m in Sources */,
 				C2D7CBDF1F7249C500648CED /* TLUserHelper.m in Sources */,
@@ -920,16 +1024,22 @@
 				C2097EE81C52326500163B5C /* main.m in Sources */,
 				C2D7CC631F72844200648CED /* TLDBManager.m in Sources */,
 				C2D7CC791F72852E00648CED /* TLDBGroupStore.m in Sources */,
+				83A245191FD6B1DB00F48D1A /* TLTableViewController.m in Sources */,
 				C2D7CB9E1F72470500648CED /* TLLaunchManager.m in Sources */,
-				717D13951FD58F9800B7ED9E /* TLMineViewController.m in Sources */,
 				C2D7CC201F726D4900648CED /* TLUser.m in Sources */,
+<<<<<<< Updated upstream
 				83A72D501FD7B7EA00C8D657 /* TLFriendsViewController.m in Sources */,
 				717D138B1FD585DA00B7ED9E /* TLTableViewController.m in Sources */,
 				83A72D541FD7B8E000C8D657 /* ChatViewController.m in Sources */,
+=======
+				83A2450F1FD6AF7300F48D1A /* TLFriendsViewController.m in Sources */,
+>>>>>>> Stashed changes
 				C2D7CC781F72852E00648CED /* TLDBFriendStore.m in Sources */,
+				83396ED51FD6D0040022C9E1 /* ChatViewController.m in Sources */,
 				C2D7C89B1F722E6700648CED /* TLAppConfig.m in Sources */,
 				C2D7CBDC1F72498900648CED /* TLAccountManager.m in Sources */,
-				714F231F1FD40D2F004786A6 /* NSFileManager+TLChat.m in Sources */,
+				83A245031FD6ADCB00F48D1A /* TLConversationViewController.m in Sources */,
+				83A2450A1FD6AE8C00F48D1A /* NSFileManager+TLChat.m in Sources */,
 				C2D7C9131F7246CC00648CED /* UIFont+TLChat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1059,7 +1169,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
+				DEVELOPMENT_TEAM = Y4CK7LDDT8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
@@ -1069,7 +1179,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lbk.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bupt917;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1086,7 +1196,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
+				DEVELOPMENT_TEAM = Y4CK7LDDT8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
@@ -1096,7 +1206,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lbk.TLChat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bupt917;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

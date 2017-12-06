@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:self.chatName];
     [self initChatUI];
 
 
@@ -30,12 +29,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.toolbarHidden = YES;
+    [super viewWillDisappear:animated];
+}
+//
+//- （void)barbutton
+
 #pragma mark - private method
 
 - (void)initChatUI{
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tabBarItem setTitle:self.chatName];
-    // [self.tableView setTableHeaderView:self.searchController.searchBar];
+    [self.navigationItem setTitle:self.chatName];
+    self.navigationController.toolbarHidden = NO;
     [self.tableView addSubview:self.chatScrollImageView];
     [self.chatScrollImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.tableView);
@@ -56,6 +63,7 @@
 
 
 // TODO: add bottom toolbar to input text, record message and send image
+//- (UIToolbar*)to
 
 @end
 
