@@ -15,7 +15,7 @@
 		83A72D4B1FD7B7E100C8D657 /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D4A1FD7B7E100C8D657 /* TLConversationViewController.m */; };
 		83A72D501FD7B7EA00C8D657 /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D4F1FD7B7EA00C8D657 /* TLFriendsViewController.m */; };
 		83A72D541FD7B8E000C8D657 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D531FD7B8E000C8D657 /* ChatViewController.m */; };
-		88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */; };
+		88ADAC5B8F7198E35AF43F48 /* libPods-TLChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		C2097EE81C52326500163B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097EE71C52326500163B5C /* main.m */; };
 		C2097F011C52326500163B5C /* TLChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F001C52326500163B5C /* TLChatTests.m */; };
 		C2097F0C1C52326500163B5C /* TLChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2097F0B1C52326500163B5C /* TLChatUITests.m */; };
@@ -779,7 +779,7 @@
 				TargetAttributes = {
 					C2097EE21C52326500163B5C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 8ZE6MPGQ6N;
+						DevelopmentTeam = Y4CK7LDDT8;
 						ProvisioningStyle = Automatic;
 					};
 					C2097EFB1C52326500163B5C = {
@@ -862,13 +862,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TLChat-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF9F8C675570F5C5117DA386 /* [CP] Copy Pods Resources */ = {
@@ -877,9 +880,15 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TLChat/Pods-TLChat-resources.sh",
+				"${PODS_ROOT}/JSPatch/JSPatch/JSPatch.js",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1059,7 +1068,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
+				DEVELOPMENT_TEAM = Y4CK7LDDT8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
@@ -1086,7 +1095,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8ZE6MPGQ6N;
+				DEVELOPMENT_TEAM = Y4CK7LDDT8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TLChat/TLKitExtensions/Frameworks",
