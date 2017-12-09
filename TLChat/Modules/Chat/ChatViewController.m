@@ -48,7 +48,11 @@
         make.centerX.mas_equalTo(self.tableView);
         make.bottom.mas_equalTo(self.tableView.mas_top).mas_offset(-35);
     }];
-    
+    UIBarButtonItem *one = [[UIBarButtonItem alloc] initWithTitle:@"发送图片" style:UIBarButtonItemStyleDone
+                                                           target:self action:@selector(showImagePicker)];
+    UIBarButtonItem *two = [[UIBarButtonItem alloc] initWithTitle:@"发送语音" style:UIBarButtonItemStyleDone
+                                                           target:self  action:nil];
+    [self setToolbarItems:[NSArray arrayWithObjects:one,two, nil]];
 //    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"] style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonDown:)];
 //    [self.navigationItem setRightBarButtonItem:rightBarButtonItem];
 }
@@ -61,9 +65,39 @@
     return _chatScrollImageView;
 }
 
+#pragma mark - imagaPicker
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
+    /*添加处理选中图像代码*/
+    picker.delegate = self;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];//把获取的图片设为当前程序的背景
+    [picker.view removeFromSuperview];//
+}
+
+#pragma mark - View lifecycle
+-(void)showImagePicker{
+    UIApplication *myApp = [UIApplication sharedApplication];
+    [myApp setStatusBarHidden:YES];//状态栏隐藏
+    
+    UIImagePickerController* picker = [[UIImagePickerController alloc]init];//创建
+    picker.delegate = self;//设置委托
+    //选取器自适应
+    picker.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    picker.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    picker.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    picker.view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    //picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    //图像来源
+    picker.allowsEditing=YES;//允许编辑图片
+    [self.view addSubview:picker.view];//添加到当前窗口
+}
 
 // TODO: add bottom toolbar to input text, record message and send image
 //- (UIToolbar*)to
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
+    // Return YES for supported orientations
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
 
 @end
 
