@@ -12,6 +12,7 @@
 		717D138B1FD585DA00B7ED9E /* TLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717D138A1FD585DA00B7ED9E /* TLTableViewController.m */; };
 		717D13951FD58F9800B7ED9E /* TLMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 717D13941FD58F9800B7ED9E /* TLMineViewController.m */; };
 		71EA50231FD41C54007EAE1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71EA50221FD41C54007EAE1A /* Info.plist */; };
+		833FA0C71FDBDF060033F3E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833FA0C61FDBDF050033F3E2 /* Assets.xcassets */; };
 		83A72D4B1FD7B7E100C8D657 /* TLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D4A1FD7B7E100C8D657 /* TLConversationViewController.m */; };
 		83A72D501FD7B7EA00C8D657 /* TLFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D4F1FD7B7EA00C8D657 /* TLFriendsViewController.m */; };
 		83A72D541FD7B8E000C8D657 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A72D531FD7B8E000C8D657 /* ChatViewController.m */; };
@@ -99,6 +100,7 @@
 		717D13941FD58F9800B7ED9E /* TLMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMineViewController.m; sourceTree = "<group>"; };
 		71EA50221FD41C54007EAE1A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75B8BEA1E816AE40E5E1CBA0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		833FA0C61FDBDF050033F3E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83A72D491FD7B7E100C8D657 /* TLConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLConversationViewController.h; sourceTree = "<group>"; };
 		83A72D4A1FD7B7E100C8D657 /* TLConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLConversationViewController.m; sourceTree = "<group>"; };
 		83A72D4E1FD7B7EA00C8D657 /* TLFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFriendsViewController.h; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		C2097EE51C52326500163B5C /* TLChat */ = {
 			isa = PBXGroup;
 			children = (
+				833FA0C61FDBDF050033F3E2 /* Assets.xcassets */,
 				71EA50221FD41C54007EAE1A /* Info.plist */,
 				C2EAC3001F71004300BA2ED3 /* TLKitExtensions */,
 				C2D7C8851F72107D00648CED /* AppControlCenter */,
@@ -821,6 +824,7 @@
 				C2D7CB4C1F72470400648CED /* Common.xcassets in Resources */,
 				C2D7CB9B1F72470400648CED /* Launch.xcassets in Resources */,
 				C2D7CB4D1F72470400648CED /* main.js in Resources */,
+				833FA0C71FDBDF060033F3E2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,7 +887,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TLChat/Pods-TLChat-resources.sh",
 				"${PODS_ROOT}/JSPatch/JSPatch/JSPatch.js",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
