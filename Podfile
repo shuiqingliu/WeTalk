@@ -24,5 +24,4 @@ target :TLChat do
     pod 'CocoaLumberjack', '~> 2.2.0'
     pod 'MJRefresh', '~> 3.1.0'
     pod 'MWPhotoBrowser', '~> 2.1.1'
-    pod 'JSPatchPlatform', '~> 1.6.6'
 end
