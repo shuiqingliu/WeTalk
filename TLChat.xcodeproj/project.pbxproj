@@ -13,6 +13,7 @@
 		831873CE200BA7AD00A4590E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 831873CC200BA7AC00A4590E /* Reachability.m */; };
 		833C59181FEFDC7B00B60FC2 /* TLFileMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C59171FEFDC7B00B60FC2 /* TLFileMessage.m */; };
 		833C591E1FEFE8EC00B60FC2 /* TLFileMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C591D1FEFE8EC00B60FC2 /* TLFileMessageCell.m */; };
+		835D7B392018BA2400578B88 /* MessageTrans.m in Sources */ = {isa = PBXBuildFile; fileRef = 835D7B382018BA2400578B88 /* MessageTrans.m */; };
 		837243861FDD8989008F426E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 837243811FDD8989008F426E /* BaseViewController.m */; };
 		837243871FDD8989008F426E /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 837243831FDD8989008F426E /* MeCell.m */; };
 		837243881FDD8989008F426E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 837243851FDD8989008F426E /* SettingViewController.m */; };
@@ -335,6 +336,8 @@
 		833C59171FEFDC7B00B60FC2 /* TLFileMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLFileMessage.m; sourceTree = "<group>"; };
 		833C591C1FEFE8EC00B60FC2 /* TLFileMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLFileMessageCell.h; sourceTree = "<group>"; };
 		833C591D1FEFE8EC00B60FC2 /* TLFileMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLFileMessageCell.m; sourceTree = "<group>"; };
+		835D7B372018BA2400578B88 /* MessageTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTrans.h; sourceTree = "<group>"; };
+		835D7B382018BA2400578B88 /* MessageTrans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTrans.m; sourceTree = "<group>"; };
 		837243801FDD8989008F426E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		837243811FDD8989008F426E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		837243821FDD8989008F426E /* MeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeCell.h; sourceTree = "<group>"; };
@@ -964,6 +967,15 @@
 				EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		835D7B362018B9C700578B88 /* MessageNet */ = {
+			isa = PBXGroup;
+			children = (
+				835D7B372018BA2400578B88 /* MessageTrans.h */,
+				835D7B382018BA2400578B88 /* MessageTrans.m */,
+			);
+			path = MessageNet;
 			sourceTree = "<group>";
 		};
 		8372437B1FDD8443008F426E /* File */ = {
@@ -2784,6 +2796,7 @@
 		C2D7CBE41F7267E300648CED /* TLMessageCenter */ = {
 			isa = PBXGroup;
 			children = (
+				835D7B362018B9C700578B88 /* MessageNet */,
 				C2D7CC7A1F72854200648CED /* Store */,
 				C2D7CC591F7281DA00648CED /* TLConversation */,
 				C2D7CC411F7281D200648CED /* TLMessage */,
@@ -3194,7 +3207,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TLChat/Pods-TLChat-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -3401,6 +3414,7 @@
 				C2D7CB3B1F72470400648CED /* TLEmojiGroup.m in Sources */,
 				C2D7CB5D1F72470400648CED /* TLGameViewController.m in Sources */,
 				C2D7CB2A1F72470400648CED /* TLMessageBaseCell.m in Sources */,
+				835D7B392018BA2400578B88 /* MessageTrans.m in Sources */,
 				C2D7CBC91F72470500648CED /* TLMineSettingViewController.m in Sources */,
 				C2D7CB4E1F72470400648CED /* TLImageBrowserController.m in Sources */,
 				C2D7CC3D1F726E8700648CED /* TLMomentComment.m in Sources */,
