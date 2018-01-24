@@ -9,7 +9,7 @@
 #import "MessageTrans.h"
 #import <CoreFoundation/CFSocket.h>
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
-#import "ViewController.h"
+#import "TLMacros.h"
 
 @interface MessageTrans()<GCDAsyncSocketDelegate>
 
@@ -20,12 +20,12 @@
 @implementation MessageTrans
 
 - (void)createSocketConnect{
-    NSString *host = @"127.0.0.1";
-    NSInteger port = 21473;
+    NSString *host = SOCKET_IP;
+    NSInteger port = SOCKET_PORT;
     NSError *error;
-    
-    [self.socket connectToHost:host onPort:port error:&error];
-    
+    if (!_socket.isConnected) {
+        [self.socket connectToHost:host onPort:port error:&error];
+    }
     if (error) {
         [self socketLogMessageWithString:[NSString stringWithFormat:@"连接失败: %@",error.localizedDescription]];
         return;
@@ -103,10 +103,6 @@ didWriteDataWithTag:(long)tag {
     NSLog(@"读取数据成功: %@", receiverStr);
     NSString *sendMessage = [NSString stringWithFormat:@"接收到的消息: %@", receiverStr];
     [self socketLogMessageWithString:sendMessage];
-    ViewController *vc = [[ViewController alloc]init];
-    if (![sendMessage containsString:@"exit\n"]) {
-        [vc changeLogTextViewWithString:sendMessage];
-    }
 
 }
 

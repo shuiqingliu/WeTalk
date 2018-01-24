@@ -15,17 +15,14 @@
 #import "TLFriendsViewController.h"
 #import "TLDiscoverViewController.h"
 #import "TLMineViewController.h"
-
+#import "MessageTrans.h"
 #import "TLUserHelper.h"
 
-void addBarChildViewController(UITabBarController *tabBarController, UIViewController *vc, NSString *title, NSString *image, NSString *imageHL)
-{
-    [vc.tabBarItem setTitle:title];
-    [vc.tabBarItem setImage:[UIImage imageNamed:image]];
-    [vc.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
-    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
-    [tabBarController addChildViewController:navC];
-}
+@interface TLLaunchManager()
+
+@property (nonatomic,strong) MessageTrans *messageTrans;
+
+@end
 
 @implementation TLLaunchManager
 @synthesize rootVC = _rootVC;
@@ -48,7 +45,6 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
     UIViewController *rootVC;
     if ([TLUserHelper sharedHelper].isLogin) {      // 已登录
         [self p_resetRootVC];
-        
         rootVC = self.rootVC;
         // 初始化用户信息
         [self initUserData];
@@ -65,6 +61,9 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
     [window setRootViewController:rootVC];
     [window addSubview:rootVC.view];
     [window makeKeyAndVisible];
+    [self.messageTrans createSocketConnect];
+    
+    // TODO:发送登录消息给服务器，等构造消息的类完成后添加响应逻辑
 }
 
 #pragma mark - # Private Methods
@@ -87,6 +86,25 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
         [_rootVC.tabBar setTintColor:[UIColor colorWithRed:35.0/255 green:106.0/255 blue:245.0/255 alpha:1.0]];
     }
     return _rootVC;
+}
+
+void addBarChildViewController(UITabBarController *tabBarController, UIViewController *vc, NSString *title, NSString *image, NSString *imageHL)
+{
+    [vc.tabBarItem setTitle:title];
+    [vc.tabBarItem setImage:[UIImage imageNamed:image]];
+    [vc.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
+    [tabBarController addChildViewController:navC];
+}
+
+- (MessageTrans *)messageTrans{
+    if (!_messageTrans) {
+        _messageTrans = [[MessageTrans alloc] init];
+        [_messageTrans setChatContentSendMessage:^(NSString *message){
+            NSLog(@"%@",message);
+        }];
+    }
+    return _messageTrans;
 }
 
 @end

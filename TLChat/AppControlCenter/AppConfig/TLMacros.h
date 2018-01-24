@@ -26,6 +26,8 @@ typedef void(^TLBlockRequestFailureWithErrorMessage)(NSString *errMsg);
 
 #pragma mark - # 服务器地址
 // 服务器
+#define     SOCKET_IP                   @"127.0.0.1"
+#define     SOCKET_PORT                 21473
 #define     HOST_URL                    @"http://101.200.134.35:8000/"
 //#define     HOST_URL                    @"http://10.252.146.27:8000/"
 

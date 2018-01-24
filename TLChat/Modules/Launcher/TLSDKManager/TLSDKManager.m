@@ -9,7 +9,6 @@
 
 #import "TLSDKManager.h"
 #import <AFNetworking.h>
-#import <JSPatchPlatform/JSPatch.h>
 #import "TLSDKConfigKey.h"
 
 @implementation TLSDKManager
@@ -31,14 +30,6 @@
     
     // 网络环境监测
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    // JSPatch
-#ifdef DEBUG_JSPATCH
-    [JSPatch testScriptInBundle];
-#else
-    [JSPatch startWithAppKey:JSPATCH_APPKEY];
-    [JSPatch sync];
-#endif
     
     // Mob SMS
     //    [SMSSDK registerApp:MOB_SMS_APPKEY withSecret:MOB_SMS_SECRET];

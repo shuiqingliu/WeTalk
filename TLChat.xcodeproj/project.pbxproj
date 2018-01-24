@@ -137,7 +137,6 @@
 		C2D7CB4A1F72470400648CED /* FaceEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9B51F72470400648CED /* FaceEmoji.json */; };
 		C2D7CB4B1F72470400648CED /* SystemEmoji.json in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9B61F72470400648CED /* SystemEmoji.json */; };
 		C2D7CB4C1F72470400648CED /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9B91F72470400648CED /* Common.xcassets */; };
-		C2D7CB4D1F72470400648CED /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = C2D7C9BB1F72470400648CED /* main.js */; };
 		C2D7CB4E1F72470400648CED /* TLImageBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9BE1F72470400648CED /* TLImageBrowserController.m */; };
 		C2D7CB4F1F72470400648CED /* TLImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9C11F72470400648CED /* TLImagePickerController.m */; };
 		C2D7CB501F72470400648CED /* TLPictureCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D7C9C51F72470400648CED /* TLPictureCarouselView.m */; };
@@ -595,7 +594,6 @@
 		C2D7C9B51F72470400648CED /* FaceEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FaceEmoji.json; sourceTree = "<group>"; };
 		C2D7C9B61F72470400648CED /* SystemEmoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SystemEmoji.json; sourceTree = "<group>"; };
 		C2D7C9B91F72470400648CED /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
-		C2D7C9BB1F72470400648CED /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		C2D7C9BD1F72470400648CED /* TLImageBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImageBrowserController.h; sourceTree = "<group>"; };
 		C2D7C9BE1F72470400648CED /* TLImageBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLImageBrowserController.m; sourceTree = "<group>"; };
 		C2D7C9C01F72470400648CED /* TLImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLImagePickerController.h; sourceTree = "<group>"; };
@@ -1916,17 +1914,8 @@
 			isa = PBXGroup;
 			children = (
 				C2D7C9B91F72470400648CED /* Common.xcassets */,
-				C2D7C9BA1F72470400648CED /* JSPatch */,
 			);
 			path = Resoueces;
-			sourceTree = "<group>";
-		};
-		C2D7C9BA1F72470400648CED /* JSPatch */ = {
-			isa = PBXGroup;
-			children = (
-				C2D7C9BB1F72470400648CED /* main.js */,
-			);
-			path = JSPatch;
 			sourceTree = "<group>";
 		};
 		C2D7C9BC1F72470400648CED /* TLImageBrowser */ = {
@@ -3144,7 +3133,6 @@
 				C2D7CB571F72470400648CED /* Conversation.xcassets in Resources */,
 				C2D7CB4B1F72470400648CED /* SystemEmoji.json in Resources */,
 				C2D7CB4A1F72470400648CED /* FaceEmoji.json in Resources */,
-				C2D7CB4D1F72470400648CED /* main.js in Resources */,
 				C2D7CB701F72470400648CED /* Moments.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
