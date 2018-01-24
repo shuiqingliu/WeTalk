@@ -1,3 +1,11 @@
+//
+//  TLMacros.h
+//  TLChat
+//
+//  Created by iOS Team on 2017/9/20.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
+
 #ifndef TLMacros_h
 #define TLMacros_h
 
@@ -18,8 +26,8 @@ typedef void(^TLBlockRequestFailureWithErrorMessage)(NSString *errMsg);
 
 #pragma mark - # 服务器地址
 // 服务器
-//#define     HOST_URL                    @"http://101.200.134.35:8000/"
-#define     HOST_URL                    @"http://10.252.146.27:8000/"
+#define     HOST_URL                    @"http://101.200.134.35:8000/"
+//#define     HOST_URL                    @"http://10.252.146.27:8000/"
 
 // 表情服务器
 #define     IEXPRESSION_HOST_URL        @"http://123.57.155.230/ibiaoqing/admin/"

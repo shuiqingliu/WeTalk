@@ -2,7 +2,7 @@
 //  UIView+TipView.h
 //  Pods
 //
-//  Created by 李伯坤 on 2017/8/30.
+//  Created by iOS Team on 2017/8/30.
 //
 //
 

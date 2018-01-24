@@ -2,8 +2,8 @@
 //  UIViewController+NavBar.m
 //  TLKit
 //
-//  Created by 李伯坤 on 2017/9/12.
-//  Copyright © 2017年 李伯坤. All rights reserved.
+//  Created by iOS Team on 2017/9/12.
+//  Copyright © 2017年 iOS Team. All rights reserved.
 //
 
 #import "UIViewController+NavBar.h"

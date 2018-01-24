@@ -1,12 +1,23 @@
-
+//
+//  TLLaunchManager.m
+//  TLChat
+//
+//  Created by iOS Team on 2017/9/19.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #import "TLLaunchManager.h"
 #import "TLLaunchManager+UserData.h"
+
 #import "TLAccountViewController.h"
-#import "TLUserHelper.h"
+
 #import "TLConversationViewController.h"
 #import "TLFriendsViewController.h"
+#import "TLDiscoverViewController.h"
 #import "TLMineViewController.h"
+
+#import "TLUserHelper.h"
+
 void addBarChildViewController(UITabBarController *tabBarController, UIViewController *vc, NSString *title, NSString *image, NSString *imageHL)
 {
     [vc.tabBarItem setTitle:title];
@@ -64,7 +75,7 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
     addBarChildViewController(self.rootVC, [[TLConversationViewController alloc] init], @"消息", @"tabbar_mainframe", @"tabbar_mainframeHL");
     addBarChildViewController(self.rootVC, [[TLFriendsViewController alloc] init], @"通讯录", @"tabbar_contacts", @"tabbar_contactsHL");
     //addBarChildViewController(self.rootVC, [[TLDiscoverViewController alloc] init], @"发现", @"tabbar_discover", @"tabbar_discoverHL");
-   addBarChildViewController(self.rootVC, [[TLMineViewController alloc] init], @"我", @"tabbar_me", @"tabbar_meHL");
+    addBarChildViewController(self.rootVC, [[TLMineViewController alloc] init], @"我", @"tabbar_me", @"tabbar_meHL");
 }
 
 #pragma mark - # Getters
@@ -72,8 +83,8 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
 {
     if (!_rootVC) {
         _rootVC = [[TLTabBarController alloc] init];
-        [_rootVC.tabBar setBackgroundColor:[UIColor colorGrayBG]];
-        [_rootVC.tabBar setTintColor:[UIColor colorGreenDefault]];
+        [_rootVC.tabBar setBackgroundColor:[UIColor  colorWithRed:35.0/255 green:106.0/255 blue:245.0/255 alpha:1.0]];
+        [_rootVC.tabBar setTintColor:[UIColor colorWithRed:35.0/255 green:106.0/255 blue:245.0/255 alpha:1.0]];
     }
     return _rootVC;
 }

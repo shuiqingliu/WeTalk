@@ -1,4 +1,10 @@
-
+//
+//  TLAccountViewController.m
+//  TLChat
+//
+//  Created by iOS Team on 2017/1/6.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #import "TLAccountViewController.h"
 #import "TLLoginViewController.h"
@@ -53,27 +59,22 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
         return button;
     };
     
-    // 注册按钮
-    UIButton *registerButton = createButton(@"注 册", [UIColor redColor], TLAccountButtonTypeRegister);
-    [self.view addSubview:registerButton];
-    [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(EDGE_BUTTON);
-        make.bottom.mas_equalTo(-EDGE_BUTTON * 2);
-        make.width.mas_equalTo((SCREEN_WIDTH - EDGE_BUTTON * 3) / 2);
-        make.height.mas_equalTo(HEIGHT_BUTTON);
-    }];
-    
     // 登录按钮
     UIButton *loginButton = createButton(@"登 录", [UIColor colorGreenDefault], TLAccountButtonTypeLogin);
     [self.view addSubview:loginButton];
+    [loginButton setBackgroundColor:[UIColor blueColor] forState:UIControlStateNormal];
     [loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(EDGE_BUTTON);
         make.right.mas_equalTo(-EDGE_BUTTON);
-        make.size.and.bottom.mas_equalTo(registerButton);
+        make.height.mas_equalTo(HEIGHT_BUTTON);
+        make.bottom.mas_equalTo(-EDGE_BUTTON * 2);
+        //make.width.mas_equalTo((SCREEN_WIDTH - EDGE_BUTTON * 3));
+        //make.size.and.bottom.mas_equalTo(registerButton);
     }];
     
     
     // 测试按钮
-    UIButton *testButton = createButton(@"使用测试账号登录", [UIColor blackColor], TLAccountButtonTypeTest);
+    UIButton *testButton = createButton(@"使用测试账号登录", [UIColor clearColor], TLAccountButtonTypeTest);
     [testButton.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
     [self.view addSubview:testButton];
     [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -88,19 +89,7 @@ typedef NS_ENUM(NSInteger, TLAccountButtonType) {
 #pragma mark - # Event Response
 - (void)buttonClicked:(UIButton *)sender
 {
-    if (sender.tag == TLAccountButtonTypeRegister) {
-        TLRegisterViewController *registerVC = [[TLRegisterViewController alloc] init];
-        TLWeakSelf(registerVC);
-        TLWeakSelf(self);
-        [registerVC setRegisterSuccess:^{
-            [weakregisterVC dismissViewControllerAnimated:NO completion:nil];
-            if (weakself.loginSuccess) {
-                weakself.loginSuccess();
-            }
-        }];
-        [self presentViewController:registerVC animated:YES completion:nil];
-    }
-    else if (sender.tag == TLAccountButtonTypeLogin) {
+    if (sender.tag == TLAccountButtonTypeLogin) {
         TLLoginViewController *loginVC = [[TLLoginViewController alloc] init];
         TLWeakSelf(self);
         TLWeakSelf(loginVC);

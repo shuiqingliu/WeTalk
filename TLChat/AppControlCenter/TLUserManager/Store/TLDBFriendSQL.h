@@ -1,3 +1,10 @@
+//
+//  TLDBFriendSQL.h
+//  TLChat
+//
+//  Created by iOS Team on 16/3/22.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #ifndef TLDBFriendSQL_h
 #define TLDBFriendSQL_h

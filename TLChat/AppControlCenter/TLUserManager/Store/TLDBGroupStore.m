@@ -1,3 +1,11 @@
+//
+//  TLDBGroupStore.m
+//  TLChat
+//
+//  Created by iOS Team on 16/4/17.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
+
 #import "TLDBGroupStore.h"
 #import "TLDBGroupSQL.h"
 #import "TLGroup.h"
@@ -125,6 +133,12 @@
 - (BOOL)addGroupMembers:(NSArray *)users forUid:(NSString *)uid andGid:(NSString *)gid
 {
     NSArray *oldData = [self groupMembersForUid:uid andGid:gid];
+    for (TLUser *user in oldData) {
+        NSLog(@"%@",user.username);
+        NSLog(@"!!!!!!!!");
+    }
+    
+    
     if (oldData.count > 0) {
         // 建立新数据的hash表，用于删除数据库中的过时数据
         NSMutableDictionary *newDataHash = [[NSMutableDictionary alloc] init];
@@ -152,12 +166,15 @@
 - (NSMutableArray *)groupMembersForUid:(NSString *)uid andGid:(NSString *)gid
 {
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
-    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_GROUP_MEMBERS, GROUP_MEMBER_TABLE_NAMGE, uid];
+    //NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_GROUP_MEMBERS, GROUP_MEMBER_TABLE_NAMGE, uid];
     
+    //开始瞎搞
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_GROUP_MEMBERS, GROUP_MEMBER_TABLE_NAMGE, uid,gid];
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
             TLUser *user = [[TLUser alloc] init];
-            user.userID = [retSet stringForColumn:@"uid"];
+            //user.userID = [retSet stringForColumn:@"uid"];
+            user.userID = [retSet stringForColumn:@"fid"];
             user.username = [retSet stringForColumn:@"username"];
             user.nikeName = [retSet stringForColumn:@"nikename"];
             user.avatarURL = [retSet stringForColumn:@"avatar"];

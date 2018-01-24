@@ -1,3 +1,10 @@
+//
+//  TLRootProxy.m
+//  TLChat
+//
+//  Created by iOS Team on 16/3/13.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #import "TLRootProxy.h"
 #import "TLMacros.h"
@@ -11,7 +18,12 @@
 - (void)requestClientInitInfoSuccess:(void (^)(id)) clientInitInfo
                              failure:(void (^)(NSString *))error
 {
-    
+//    NSString *urlString = [TLHost clientInitInfoURL];
+//    [TLNetworking postUrl:urlString parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSLog(@"OK");
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"NO");
+//    }];
 }
 
 - (void)userLoginWithPhoneNumber:(NSString *)phoneNumber

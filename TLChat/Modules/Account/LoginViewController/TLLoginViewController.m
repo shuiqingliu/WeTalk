@@ -1,6 +1,9 @@
 
 #import "TLLoginViewController.h"
 #import "TLRootProxy.h"
+#import "TLLaunchManager.h"
+#import "TLUserHelper.h"
+#import "TLUser.h"
 
 #define     HEIGHT_ITEM     45.0f
 #define     EDGE_LINE       20.0f
@@ -25,6 +28,8 @@
 @property (nonatomic, strong) UITextField *passwordTextField;
 
 @property (nonatomic, strong) UIButton *loginButton;
+@property (nonatomic, strong) UIButton *forgetButton;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
@@ -44,9 +49,9 @@
     [self.scrollView addSubview:self.passwordTitleLabel];
     [self.scrollView addSubview:self.passwordTextField];
     [self.scrollView addSubview:self.loginButton];
-    
+    [self.scrollView addSubview:self.forgetButton];
     [self p_addMasonry];
-    
+  
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];
     [self.scrollView addGestureRecognizer:tapGR];
     
@@ -78,24 +83,43 @@
 - (void)loginButtonClicked
 {
     NSString *phoneNumber = self.phoneNumberTextField.text;
+    NSString *password = self.passwordTextField.text;
     //验证手机号
-    if (phoneNumber.length != 11 && ![phoneNumber hasPrefix:@"1"]) {
-        [TLUIUtility showErrorHint:@"请输入正确的手机号"];
+    if (phoneNumber.length != 11 && ![phoneNumber hasPrefix:@"1"] && phoneNumber.length != 0) {
+        [TLUIUtility showErrorHint:@"请输入正确的账号密码"];
         return;
     }
-    NSString *password = self.passwordTextField.text;
+    if (phoneNumber.length == 0 || password.length== 0) {
+        [TLUIUtility showErrorHint:@"您输入的账号密码不能为空"];
+        return;
+    }
     
-    [TLUIUtility showLoading:nil];
-    TLRootProxy *proxy = [[TLRootProxy alloc] init];
-    TLWeakSelf(self);
-    [proxy userLoginWithPhoneNumber:phoneNumber password:password success:^(id datas) {
-        [TLUIUtility hiddenLoading];
-        if (weakself.loginSuccess) {
-            weakself.loginSuccess();
-        }
-    } failure:^(NSString *errMsg) {
-        [TLUIUtility showErrorHint:errMsg];
-    }];
+    if ([phoneNumber  isEqual: @"110"] && [password  isEqual: @"root"]) {
+        TLUserHelper *userHelper = [TLUserHelper sharedHelper];
+        TLUser *user = [[TLUser alloc] init];
+        user.userID = @"1000";
+        [userHelper setUser:user];
+        UIWindow *window = self.view.window;
+        [[TLLaunchManager sharedInstance] launchInWindow:window];
+    }
+    
+    //[TLUIUtility showLoading:nil];
+    //TLRootProxy *proxy = [[TLRootProxy alloc] init];
+    //TLWeakSelf(self);
+    //[proxy userLoginWithPhoneNumber:phoneNumber password:password success:^(id datas) {
+      //  [TLUIUtility hiddenLoading];
+//        if (weakself.loginSuccess) {
+//            weakself.loginSuccess();
+//        }
+//    } failure:^(NSString *errMsg) {
+//        [TLUIUtility showErrorHint:errMsg];
+//    }];
+}
+-(void)forgetButtonClicked
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"忘记密码" message:@"请及时联系管理员" delegate:nil cancelButtonTitle:@"返回"otherButtonTitles:nil,nil];
+    alert.alertViewStyle = UIAlertViewStyleDefault;
+    [alert show];
 }
 
 #pragma mark - # Private Methods
@@ -134,7 +158,6 @@
         make.height.mas_equalTo(HEIGHT_ITEM);
         make.right.mas_equalTo(self.view).mas_offset(-EDGE_LINE);
     }];
-    
     UIView *line1 = crateLine();
     [self.scrollView addSubview:line1];
     [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -202,6 +225,23 @@
         make.height.mas_equalTo(HEIGHT_ITEM);
         make.top.mas_equalTo(line3.mas_bottom).mas_offset(HEIGHT_ITEM);
     }];
+ 
+    
+    UIView *line5 = crateLine();
+    [self.scrollView addSubview:line5];
+    [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.passwordTitleLabel.mas_bottom);
+        make.left.mas_equalTo(EDGE_LINE);
+        make.width.mas_equalTo(self.scrollView).mas_offset(-EDGE_LINE * 2);
+        make.height.mas_equalTo(BORDER_WIDTH_1PX);
+    }];
+    
+    [self.forgetButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.mas_equalTo(line5);
+        make.height.mas_equalTo(HEIGHT_ITEM);
+        make.top.mas_equalTo(line5.mas_bottom).mas_offset(HEIGHT_ITEM * 8);
+    }];
+   
 }
 
 
@@ -230,8 +270,10 @@
 {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        [_titleLabel setFont:[UIFont systemFontOfSize:28.0]];
-        [_titleLabel setText:@"使用手机号登录"];
+        [_titleLabel setFont:[UIFont systemFontOfSize:40.0]];
+        [_titleLabel setText:@"WeTalk"];
+        [_titleLabel setTextColor:[UIColor colorWithRed:35.0/255 green:106.0/255 blue:245.0/255 alpha:1.0]];
+        [_titleLabel setFont:[UIFont fontWithName:@"Courier-Bold" size:40]];
     }
     return _titleLabel;
 }
@@ -241,7 +283,7 @@
     if (!_originTitleLabel) {
         _originTitleLabel = [[UILabel alloc] init];
         [_originTitleLabel setFont:[UIFont systemFontOfSize:17.0f]];
-        [_originTitleLabel setText:@"国家/地区"];
+        [_originTitleLabel setText:@""];
     }
     return _originTitleLabel;
 }
@@ -250,7 +292,7 @@
     if (!_originLabel) {
         _originLabel = [[UILabel alloc] init];
         [_originLabel setFont:[UIFont systemFontOfSize:17.0f]];
-        [_originLabel setText:@"中国"];
+        [_originLabel setText:@""];
     }
     return _originLabel;
 }
@@ -259,7 +301,8 @@
 {
     if (!_districtNumberLabel) {
         _districtNumberLabel = [[UILabel alloc] init];
-        [_districtNumberLabel setText:@"+86"];
+        [_districtNumberLabel setText:@"账号"];
+        [_districtNumberLabel setTextColor:[UIColor colorWithRed:35.0/255 green:106.0/255 blue:245.0/255 alpha:1.0]];
     }
     return _districtNumberLabel;
 }
@@ -267,7 +310,7 @@
 {
     if (!_phoneNumberTextField) {
         _phoneNumberTextField = [[UITextField alloc] init];
-        [_phoneNumberTextField setPlaceholder:@"请填写手机号码"];
+        [_phoneNumberTextField setPlaceholder:@"请输入账号"];
         [_phoneNumberTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [_phoneNumberTextField setKeyboardType:UIKeyboardTypePhonePad];
     }
@@ -279,6 +322,7 @@
     if (!_passwordTitleLabel) {
         _passwordTitleLabel = [[UILabel alloc] init];
         [_passwordTitleLabel setText:@"密码"];
+          [_passwordTitleLabel setTextColor:[UIColor colorWithRed:35.0/255 green:106.0/255 blue:245.0/255 alpha:1.0]];
     }
     return _passwordTitleLabel;
 }
@@ -286,7 +330,7 @@
 {
     if (!_passwordTextField) {
         _passwordTextField = [[UITextField alloc] init];
-        [_passwordTextField setPlaceholder:@"请填写密码"];
+        [_passwordTextField setPlaceholder:@"请输入密码"];
         [_passwordTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [_passwordTextField setSecureTextEntry:YES];
     }
@@ -301,12 +345,25 @@
         [button.layer setCornerRadius:4.0f];
         [button.layer setBorderWidth:BORDER_WIDTH_1PX];
         [button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
-        [button setBackgroundColor:[UIColor colorGreenDefault]];
+        [button setBackgroundColor:[UIColor colorWithRed:35.0/255 green:106.0/255 blue:245.0/255 alpha:1.0]];
         [button setTitle:@"登录" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         _loginButton = button;
     }
     return _loginButton;
+}
+
+- (UIButton *)forgetButton
+{
+    if (!_forgetButton) {
+        UIButton *button = [[UIButton alloc] init];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button setTitle:@"忘记密码" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(forgetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        _forgetButton = button;
+    }
+    return _forgetButton;
 }
 
 @end

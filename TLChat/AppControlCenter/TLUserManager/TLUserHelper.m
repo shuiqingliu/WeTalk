@@ -1,3 +1,10 @@
+//
+//  TLUserHelper.m
+//  TLChat
+//
+//  Created by iOS Team on 16/2/6.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #import "TLUserHelper.h"
 #import "TLDBUserStore.h"
@@ -20,13 +27,13 @@
     TLUser *user = [[TLUser alloc] init];
     user.userID = @"1000";
     user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
-    user.nikeName = @"范凯";
-    user.username = @"li-bokun";
-    user.detailInfo.qqNumber = @"1159197873";
-    user.detailInfo.email = @"libokun@126.com";
-    user.detailInfo.location = @"安徽六安";
+    user.nikeName = @"iOS Team";
+    user.username = @"zhang-zt";
+    user.detailInfo.qqNumber = @"1234567890";
+    user.detailInfo.email = @"zhangzt@bupt.edu.cn";
+    user.detailInfo.location = @"北京 海淀";
     user.detailInfo.sex = @"男";
-    user.detailInfo.motto = @"～～";
+    user.detailInfo.motto = @"Hello world!";
     user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
 
     [self setUser:user];

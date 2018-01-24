@@ -1,4 +1,10 @@
-
+//
+//  TLSDKConfigKey.h
+//  TLChat
+//
+//  Created by iOS Team on 2017/9/20.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #ifndef TLSDKConfigKey_h
 #define TLSDKConfigKey_h

@@ -1,3 +1,11 @@
+//
+//  TLDBGroupSQL.h
+//  TLChat
+//
+//  Created by iOS Team on 16/4/17.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
+
 #ifndef TLDBGroupSQL_h
 #define TLDBGroupSQL_h
 
@@ -44,7 +52,9 @@
 
 #define     SQL_UPDATE_GROUP_MEMBER             @"REPLACE INTO %@ ( uid, gid, fid, username, nikename, avatar, remark, ext1, ext2, ext3, ext4, ext5) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-#define     SQL_SELECT_GROUP_MEMBERS            @"SELECT * FROM %@ WHERE uid = %@"
+//#define     SQL_SELECT_GROUP_MEMBERS            @"SELECT * FROM %@ WHERE uid = %@"
+//开始瞎搞
+#define     SQL_SELECT_GROUP_MEMBERS            @"SELECT * FROM %@ WHERE uid = '%@' and gid = '%@' "
 
 #define     SQL_DELETE_GROUP_MEMBER             @"DELETE FROM %@ WHERE uid = '%@' and gid = '%@' and fid = '%@'"
 

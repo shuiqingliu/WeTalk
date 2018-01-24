@@ -1,3 +1,11 @@
+//
+//  ZZFlexibleLayoutViewController.h
+//  zhuanzhuan
+//
+//  Created by 李伯坤 on 2016/10/10.
+//  Copyright © 2016年 wuba. All rights reserved.
+//
+
 #import <UIKit/UIKit.h>
 #import "ZZFlexibleLayoutFlowLayout.h"
 #import "ZZFLEXChainSectionModel.h"

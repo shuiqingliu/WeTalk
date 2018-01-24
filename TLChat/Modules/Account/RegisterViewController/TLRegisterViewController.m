@@ -1,4 +1,10 @@
-
+//
+//  TLRegisterViewController.m
+//  TLChat
+//
+//  Created by iOS Team on 16/4/3.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #import "TLRegisterViewController.h"
 #import "TLRootProxy.h"
@@ -341,25 +347,16 @@
 - (UIButton *)registerButton
 {
     if (!_registerButton) {
-        _registerButton = [[UIButton alloc] init];
-        [_registerButton.layer setMasksToBounds:YES];
-        [_registerButton.layer setCornerRadius:4.0f];
-        [_registerButton.layer setBorderWidth:BORDER_WIDTH_1PX];
-        [_registerButton.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
-        [_registerButton setBackgroundColor:[UIColor colorGreenDefault]];
-        [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
-        [_registerButton addTarget:self action:@selector(registerButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *button = [[UIButton alloc] init];
+        [button.layer setMasksToBounds:YES];
+        [button.layer setCornerRadius:4.0f];
+        [button.layer setBorderWidth:BORDER_WIDTH_1PX];
+        [button.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [button setBackgroundColor:[UIColor colorGreenDefault]];
+        [button setTitle:@"注册" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(registerButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     }
     return _registerButton;
 }
 
-/*if (!_cancelButton) {
-    _cancelButton = [[UIButton alloc] init];
-    [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-    [_cancelButton setTitleColor:[UIColor colorGreenDefault] forState:UIControlStateNormal];
-    [_cancelButton.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
-    [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-}
-return _cancelButton;
- */
 @end

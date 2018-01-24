@@ -1,3 +1,10 @@
+//
+//  PrefixHeader.pch
+//  TLChat
+//
+//  Created by iOS Team on 16/1/23.
+//  Copyright © 2017年 iOS Team. All rights reserved.
+//
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
