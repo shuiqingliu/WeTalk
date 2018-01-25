@@ -34,13 +34,8 @@
     
     //登录
     [self.messageTrans createSocketConnect];
-    MessageKit *loginMessage = [[MessageKit alloc]init];
     NSString *userID = [[TLUserHelper sharedHelper]userID];
-    [loginMessage setFrom:userID];
-    [loginMessage setType:@"login"];
-    [loginMessage setTo:@"login_server"];
-    [loginMessage setContent:@"login server"];
-    [loginMessage setTime:[NSDate date]];
+    MessageKit *loginMessage = [[MessageKit alloc]initWithParament:@"login" from:userID to:@"login-server" content:@"就是欣一下啊啊!!!"];
     NSString *login = [loginMessage getJsonData];
     [self.messageTrans sendMessageWithString:login];
     
