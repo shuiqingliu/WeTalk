@@ -14,7 +14,9 @@
 @property (nonatomic,strong) NSString *from;
 @property (nonatomic,strong) NSString *to;
 @property (nonatomic,strong) NSString *content;
-@property (nonatomic,strong) NSDate   *time;
+@property (nonatomic,strong) NSString *time;
+
+- (id)initWithParament:(NSString*)type from:(NSString*)fromID to:(NSString*)toID content:(NSString*)msgContent;
 
 - (NSString*)getJsonData;
 
