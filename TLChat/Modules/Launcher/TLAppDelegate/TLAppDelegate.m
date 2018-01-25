@@ -10,8 +10,15 @@
 #import "TLLaunchManager.h"
 #import "TLSDKManager.h"
 #import "TLFriendsViewController.h"
+#import "MessageKit.h"
+#import "MessageTrans.h"
 
 #define ROOTVC [[[UIApplication sharedApplication] keyWindow] rootViewController]
+@interface TLAppDelegate()
+
+@property (nonatomic,strong) MessageTrans *messageTrans;
+
+@end
 
 @implementation TLAppDelegate
 
@@ -24,6 +31,20 @@
     
     // 初始化UI
     [[TLLaunchManager sharedInstance] launchInWindow:self.window];
+    
+    //登录
+    [self.messageTrans createSocketConnect];
+    MessageKit *loginMessage = [[MessageKit alloc]init];
+    NSString *userID = [[TLUserHelper sharedHelper]userID];
+    [loginMessage setFrom:userID];
+    [loginMessage setType:@"login"];
+    [loginMessage setTo:@"login_server"];
+    [loginMessage setContent:@"login server"];
+    [loginMessage setTime:[NSDate date]];
+    NSString *login = [loginMessage getJsonData];
+    [self.messageTrans sendMessageWithString:login];
+    
+    // TODO:发送登录消息给服务器，等构造消息的类完成后添加响应逻辑
     
     // 紧急方法，可使用JSPatch重写
     [self urgentMethod];
@@ -41,6 +62,17 @@
                      completion:nil];
     
     return YES;
+}
+
+
+- (MessageTrans *)messageTrans{
+    if (!_messageTrans) {
+        _messageTrans = [[MessageTrans alloc] init];
+        [_messageTrans setChatContentSendMessage:^(NSString *message){
+            NSLog(@"%@",message);
+        }];
+    }
+    return _messageTrans;
 }
 
 - (void)urgentMethod

@@ -15,14 +15,7 @@
 #import "TLFriendsViewController.h"
 #import "TLDiscoverViewController.h"
 #import "TLMineViewController.h"
-#import "MessageTrans.h"
 #import "TLUserHelper.h"
-
-@interface TLLaunchManager()
-
-@property (nonatomic,strong) MessageTrans *messageTrans;
-
-@end
 
 @implementation TLLaunchManager
 @synthesize rootVC = _rootVC;
@@ -61,9 +54,6 @@
     [window setRootViewController:rootVC];
     [window addSubview:rootVC.view];
     [window makeKeyAndVisible];
-    [self.messageTrans createSocketConnect];
-    
-    // TODO:发送登录消息给服务器，等构造消息的类完成后添加响应逻辑
 }
 
 #pragma mark - # Private Methods
@@ -95,16 +85,6 @@ void addBarChildViewController(UITabBarController *tabBarController, UIViewContr
     [vc.tabBarItem setSelectedImage:[UIImage imageNamed:imageHL]];
     UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
     [tabBarController addChildViewController:navC];
-}
-
-- (MessageTrans *)messageTrans{
-    if (!_messageTrans) {
-        _messageTrans = [[MessageTrans alloc] init];
-        [_messageTrans setChatContentSendMessage:^(NSString *message){
-            NSLog(@"%@",message);
-        }];
-    }
-    return _messageTrans;
 }
 
 @end
