@@ -10,6 +10,7 @@
 #import "TLMoreKeyboard.h"
 #import "TLEmojiKeyboard.h"
 #import "FileViewController.h"
+#import "MessageTrans.h"
 
 @interface TLChatBaseViewController (ChatBar) <TLChatBarDelegate, TLKeyboardDelegate, TLEmojiKeyboardDelegate,FileSendDelegate>
 

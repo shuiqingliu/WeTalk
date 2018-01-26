@@ -97,7 +97,7 @@
     if ([phoneNumber  isEqual: @"110"] && [password  isEqual: @"root"]) {
         TLUserHelper *userHelper = [TLUserHelper sharedHelper];
         TLUser *user = [[TLUser alloc] init];
-        user.userID = @"1000";
+        user.userID = @"u1001";
         [userHelper setUser:user];
         UIWindow *window = self.view.window;
         [[TLLaunchManager sharedInstance] launchInWindow:window];

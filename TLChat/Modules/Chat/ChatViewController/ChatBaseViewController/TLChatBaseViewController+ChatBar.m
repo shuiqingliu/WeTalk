@@ -13,6 +13,8 @@
 #import "TLAudioPlayer.h"
 #import "TLUserHelper.h"
 #import "NSFileManager+TLChat.h"
+#import "MessageKit.h"
+#import "MessageTrans.h"
 
 @implementation TLChatBaseViewController (ChatBar)
 
@@ -104,22 +106,28 @@
     TLTextMessage *message = [[TLTextMessage alloc] init];
     message.text = text;
     [self sendMessage:message];
-    if ([self.partner chat_userType] == TLChatUserTypeUser) {
-        TLTextMessage *message1 = [[TLTextMessage alloc] init];
-        message1.fromUser = self.partner;
-        message1.text = text;
-        [self receivedMessage:message1];
-    }
-    else {
-        for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
-            TLTextMessage *message1 = [[TLTextMessage alloc] init];
-            message1.friendID = [user chat_userID];
-            message1.fromUser = user;
-            message1.text = text;
-            [self receivedMessage:message1];
-        }
-    }
-}
+    NSString *userID = [[TLUserHelper sharedHelper]userID];
+    MessageKit *chatMessage = [[MessageKit alloc]initWithParament:@"msg" from:userID to:[self.partner chat_userID] content:text];
+    NSString *chatMsg = [chatMessage getJsonData];
+    [[MessageTrans sharedInstance] sendMessageWithString:chatMsg];
+    //注释掉发送文字的
+ // if ([self.partner chat_userType] == TLChatUserTypeUser) {
+//        TLTextMessage *message1 = [[TLTextMessage alloc] init];
+//        message1.fromUser = self.partner;
+//        message1.text = text;
+//        [self receivedMessage:message1];
+//    }
+//    else {
+//        for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
+//            TLTextMessage *message1 = [[TLTextMessage alloc] init];
+//            message1.friendID = [user chat_userID];
+//            message1.fromUser = user;
+//            message1.text = text;
+//            [self receivedMessage:message1];
+//        }
+//    }
+  }
+
 
 
 // 发送文件消息

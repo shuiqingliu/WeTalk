@@ -33,6 +33,7 @@
     [[TLLaunchManager sharedInstance] launchInWindow:self.window];
     
     //登录
+    self.messageTrans = [MessageTrans sharedInstance];
     [self.messageTrans createSocketConnect];
     NSString *userID = [[TLUserHelper sharedHelper]userID];
     MessageKit *loginMessage = [[MessageKit alloc]initWithParament:@"login" from:userID to:@"login-server" content:@"就是欣一下啊啊!!!"];
@@ -59,16 +60,6 @@
     return YES;
 }
 
-
-- (MessageTrans *)messageTrans{
-    if (!_messageTrans) {
-        _messageTrans = [[MessageTrans alloc] init];
-        [_messageTrans setChatContentSendMessage:^(NSString *message){
-            NSLog(@"%@",message);
-        }];
-    }
-    return _messageTrans;
-}
 
 - (void)urgentMethod
 {

@@ -10,6 +10,7 @@
 #import <CoreFoundation/CFSocket.h>
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
 #import "TLMacros.h"
+#import "TLUserHelper.h"
 
 @interface MessageTrans()<GCDAsyncSocketDelegate>
 
@@ -17,7 +18,20 @@
 
 @end
 
+static MessageTrans *messageTrans;
 @implementation MessageTrans
+
++ (MessageTrans *)sharedInstance
+{
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        messageTrans = [[MessageTrans alloc] init];
+    });
+    [messageTrans setChatContentSendMessage:^(NSString *message){
+        NSLog(@"%@",message);
+    }];
+    return messageTrans;
+}
 
 - (void)createSocketConnect{
     NSString *host = SOCKET_IP;
@@ -84,6 +98,7 @@
 - (void)socket:(GCDAsyncSocket *)sock
 didWriteDataWithTag:(long)tag {
     // 发送完数据手动读取，-1不设置超时
+    NSString *userID = [[TLUserHelper sharedHelper]userID];
     [self.socket readDataWithTimeout:-1
                                  tag:0];
     NSLog(@"消息发送成功, 用户ID号为: %ld", tag);

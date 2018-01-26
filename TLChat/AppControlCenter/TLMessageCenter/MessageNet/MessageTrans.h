@@ -12,6 +12,8 @@
 
 @property (nonatomic, copy) void(^chatContentSendMessage)(NSString *message);
 
++ (MessageTrans *)sharedInstance;
+
 /**
  创建Socket连接
  */
