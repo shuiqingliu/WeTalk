@@ -99,12 +99,22 @@
             make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(message.showName ? 0 : -MSGBG_SPACE_Y);
         }];
     }
-    [self.messageSendFailed setHidden:!message.showFailBtn];
+    
     [self.usernameLabel setHidden:!message.showName];
     [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(message.showName ? NAMELABEL_HEIGHT : 0);
     }];
     
+    [self.messageSendFailed mas_remakeConstraints:^(MASConstraintMaker *make) {
+        if (message.messageType == TLMessageTypeText) {
+            make.right.equalTo(self.messageBackgroundView.mas_left).mas_offset(-MSGBG_SPACE_X);
+            make.top.mas_equalTo(self.messageBackgroundView.mas_top).mas_offset(8);
+        } else if (message.messageType == TLMessageTypeImage){
+            make.right.equalTo(self.messageBackgroundView.mas_left).mas_offset(-170);
+            make.top.mas_equalTo(self.messageBackgroundView.mas_top).mas_offset(40);
+        }
+    }];
+    [self.messageSendFailed setHidden:!message.showFailBtn];
     _message = message;
 }
 
@@ -138,10 +148,6 @@
         make.top.mas_equalTo(self.usernameLabel.mas_bottom).mas_offset(-MSGBG_SPACE_Y);
     }];
     
-    [self.messageSendFailed mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.messageBackgroundView.mas_left).mas_offset(-MSGBG_SPACE_X);
-        make.top.mas_equalTo(self.messageBackgroundView.mas_top).mas_offset(8);
-    }];
 }
 
 #pragma mark - Event Response -
