@@ -16,6 +16,14 @@
 #import "TLDiscoverViewController.h"
 #import "TLMineViewController.h"
 #import "TLUserHelper.h"
+#import "MessageTrans.h"
+#import "MessageKit.h"
+
+@interface TLLaunchManager()
+
+@property (nonatomic,strong) MessageTrans *messageTrans;
+
+@end
 
 @implementation TLLaunchManager
 @synthesize rootVC = _rootVC;
@@ -41,6 +49,13 @@
         rootVC = self.rootVC;
         // 初始化用户信息
         [self initUserData];
+        //登录
+        self.messageTrans = [MessageTrans sharedInstance];
+        [self.messageTrans createSocketConnect];
+        NSString *userID = [[TLUserHelper sharedHelper]userID];
+        MessageKit *loginMessage = [[MessageKit alloc]initWithParament:@"login" from:userID to:@"login-server" content:@"就是欣一下啊啊!!!"];
+        NSString *login = [loginMessage getJsonData];
+        [self.messageTrans sendMessageWithString:login];
     }
     else {  // 未登录
         rootVC = [[TLAccountViewController alloc] init];
@@ -49,6 +64,13 @@
             @strongify(self);
             [self launchInWindow:window];
         }];
+        
+        self.messageTrans = [MessageTrans sharedInstance];
+        [self.messageTrans createSocketConnect];
+        NSString *userID = [[TLUserHelper sharedHelper]userID];
+        MessageKit *loginMessage = [[MessageKit alloc]initWithParament:@"login" from:userID to:@"login-server" content:@"就是欣一下啊啊!!!"];
+        NSString *login = [loginMessage getJsonData];
+        [self.messageTrans sendMessageWithString:login];
     }
     
     [window setRootViewController:rootVC];

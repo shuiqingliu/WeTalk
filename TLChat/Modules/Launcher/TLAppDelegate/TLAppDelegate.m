@@ -16,7 +16,7 @@
 #define ROOTVC [[[UIApplication sharedApplication] keyWindow] rootViewController]
 @interface TLAppDelegate()
 
-@property (nonatomic,strong) MessageTrans *messageTrans;
+
 
 @end
 
@@ -32,13 +32,7 @@
     // 初始化UI
     [[TLLaunchManager sharedInstance] launchInWindow:self.window];
     
-    //登录
-    self.messageTrans = [MessageTrans sharedInstance];
-    [self.messageTrans createSocketConnect];
-    NSString *userID = [[TLUserHelper sharedHelper]userID];
-    MessageKit *loginMessage = [[MessageKit alloc]initWithParament:@"login" from:userID to:@"login-server" content:@"就是欣一下啊啊!!!"];
-    NSString *login = [loginMessage getJsonData];
-    [self.messageTrans sendMessageWithString:login];
+
     
     // TODO:发送登录消息给服务器，等构造消息的类完成后添加响应逻辑
     
