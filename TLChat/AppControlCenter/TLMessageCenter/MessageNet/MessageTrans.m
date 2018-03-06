@@ -117,7 +117,24 @@ didWriteDataWithTag:(long)tag {
     
     NSLog(@"读取数据成功: %@", receiverStr);
     NSString *sendMessage = [NSString stringWithFormat:@"接收到的消息: %@", receiverStr];
-    [self socketLogMessageWithString:sendMessage];
+
+    dispatch_async(dispatch_get_main_queue(),^{
+        UIAlertController *messageAlert = [UIAlertController alertControllerWithTitle:@"msg" message:receiverStr preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+                                                                  //响应事件
+                                                                  NSLog(@"action = %@", action);
+                                                              }];
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * action) {
+                                                                 //响应事件
+                                                                 NSLog(@"action = %@", action);
+                                                             }];
+        [messageAlert addAction:defaultAction];
+        [messageAlert addAction:cancelAction];
+        UIViewController *view = [[[UIApplication sharedApplication] keyWindow] visibleViewController];
+        [view presentViewController:messageAlert animated:YES completion:nil];
+    });
 
 }
 
