@@ -97,12 +97,38 @@
     if ([phoneNumber  isEqual: @"110"] && [password  isEqual: @"root"]) {
         TLUserHelper *userHelper = [TLUserHelper sharedHelper];
         TLUser *user = [[TLUser alloc] init];
-        user.userID = @"u1001";
+        user.userID = @"1001";
+        //user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
+        user.avatarURL = @"http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg";
+        user.nikeName = @"ABC";
+        user.username = @"zhang-zt";
+        user.detailInfo.qqNumber = @"1234567890";
+        user.detailInfo.email = @"zhangzt@bupt.edu.cn";
+        user.detailInfo.location = @"北京 海淀";
+        user.detailInfo.sex = @"男";
+        user.detailInfo.motto = @"Hello world!";
+        user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
         [userHelper setUser:user];
         UIWindow *window = self.view.window;
         [[TLLaunchManager sharedInstance] launchInWindow:window];
     }
-    
+    if ([phoneNumber  isEqual: @"120"] && [password  isEqual: @"root"]) {
+        TLUserHelper *userHelper = [TLUserHelper sharedHelper];
+        TLUser *user = [[TLUser alloc] init];
+        user.userID = @"1002";
+        user.avatarURL = @"http://p1.qq181.com/cms/120506/2012050623111097826.jpg";
+        user.nikeName = @"ABC";
+        user.username = @"zhang-zt";
+        user.detailInfo.qqNumber = @"1234567890";
+        user.detailInfo.email = @"zhangzt@bupt.edu.cn";
+        user.detailInfo.location = @"北京 海淀";
+        user.detailInfo.sex = @"男";
+        user.detailInfo.motto = @"Hello world!";
+        user.detailInfo.momentsWallURL = @"http://img06.tooopen.com/images/20160913/tooopen_sy_178786212749.jpg";
+        [userHelper setUser:user];
+        UIWindow *window = self.view.window;
+        [[TLLaunchManager sharedInstance] launchInWindow:window];
+    }   
     //[TLUIUtility showLoading:nil];
     //TLRootProxy *proxy = [[TLRootProxy alloc] init];
     //TLWeakSelf(self);

@@ -33,6 +33,8 @@
 #import "TLDBGroupStore.h"
 #import "TLLaunchManager.h"
 
+#import "MessageKit.h"
+#import "MessageTrans.h"
 
 @interface TLSelectGroupFriendViewController ()
 @property (nonatomic, strong) UILabel *footerLabel;
@@ -117,9 +119,9 @@
     [group setGroupID:str];
     [group setUsers:_groupMeb];
     //NSString* groupName = [_groupMeb objectAtIndex:0];
-    TLUser* user0 = [_groupMeb objectAtIndex:0];
-    TLUser* user1 = [_groupMeb objectAtIndex:1];
-    NSString * groupName =  [NSString stringWithFormat:@"%@.%@...",user0.username,user1.username];
+    //TLUser* user0 = [_groupMeb objectAtIndex:0];
+    //TLUser* user1 = [_groupMeb objectAtIndex:1];
+    NSString * groupName =  [NSString stringWithFormat:@"新建群聊"];
     [group setGroupName:groupName];
     //把该群存到数据库里
     //更新该用户的所有群
@@ -146,6 +148,24 @@
         }
         NSLog(@"############");
     }
+    //给服务端发送到接口：
+    //格式{'uid'：'xxx'，'gname'，'xxx'， 'mem'：['xxx'， 'xxx'， ...]}
+
+    NSMutableString* userIDs = [[NSMutableString alloc]init];
+    [userIDs appendString:@"["];
+    for(TLUser *user in _groupMeb){
+            [userIDs appendString:user.userID];
+            [userIDs appendString:@","];
+     
+    }
+    [userIDs deleteCharactersInRange:NSMakeRange(userIDs.length-1, 1)];
+    [userIDs appendString:@"]"];
+ //   {'uid'：'xxx'，'gname'，'xxx'， 'mem'：['xxx'， 'xxx'， ...]}
+    NSString* text =[ [NSString alloc]initWithFormat:@"{uid:%@,gname:%@,mem:%@}",[TLUserHelper sharedHelper].userID,groupName,userIDs];
+    MessageKit *createGroupMessage = [[MessageKit alloc]initWithParament:@"createGroup" from:[TLUserHelper sharedHelper].userID to:@"createGroup_server" content:text];
+    NSString *createGroupMsg = [createGroupMessage getJsonData];
+    [[MessageTrans sharedInstance] sendMessageWithString:createGroupMsg];
+    
     
     
     //群头像,待写成一个固定的

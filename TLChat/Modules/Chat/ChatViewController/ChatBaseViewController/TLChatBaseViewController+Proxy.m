@@ -48,10 +48,12 @@
 {
     message.userID = [TLUserHelper sharedHelper].userID;
     if ([self.partner chat_userType] == TLChatUserTypeUser) {
+        NSLog(@"确认收到一条单聊消息");
         message.partnerType = TLPartnerTypeUser;
         message.friendID = [self.partner chat_userID];
     }
     else if ([self.partner chat_userType] == TLChatUserTypeGroup) {
+        NSLog(@"确认收到一条群消息");
         message.partnerType = TLPartnerTypeGroup;
         message.groupID = [self.partner chat_userID];
     }

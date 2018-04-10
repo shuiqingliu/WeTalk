@@ -6,11 +6,22 @@
 //  Copyright © 2018 qingliu. All rights reserved.
 //
 
+#import "MessageKit.h"
 #import "MessageTrans.h"
 #import <CoreFoundation/CFSocket.h>
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
 #import "TLMacros.h"
 #import "TLUserHelper.h"
+#import "TLConversationViewController+Delegate.h"
+#import "TLConversation+TLUser.h"
+#import "TLConversationCell.h"
+#import "TLFriendHelper.h"
+#import "TLLaunchManager.h"
+
+#import "TLChatBaseViewController+ChatBar.h"
+#import "TLChatBaseViewController+Proxy.h"
+#import "TLChatBaseViewController+MessageDisplayView.h"
+#import "TLGroup+CreateAvatar.h"
 
 @interface MessageTrans()<GCDAsyncSocketDelegate>
 
@@ -104,37 +115,142 @@ didWriteDataWithTag:(long)tag {
     NSLog(@"消息发送成功, 用户ID号为: %ld", tag);
 }
 // 读取数据
-- (void)socket:(GCDAsyncSocket *)sock
-   didReadData:(NSData *)data
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data
        withTag:(long)tag {
     if (!data) {
         [self socketLogMessageWithString:@"并没有接收到服务器的消息"];
         return;
     }
+   //[self.socket readDataWithTimeout:-1 tag:0];
     
     NSString *receiverStr = [[NSString alloc] initWithData:data
                                                   encoding:NSUTF8StringEncoding];
-    
     NSLog(@"读取数据成功: %@", receiverStr);
     NSString *sendMessage = [NSString stringWithFormat:@"接收到的消息: %@", receiverStr];
 
-    dispatch_async(dispatch_get_main_queue(),^{
-        UIAlertController *messageAlert = [UIAlertController alertControllerWithTitle:@"msg" message:receiverStr preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {
-                                                                  //响应事件
-                                                                  NSLog(@"action = %@", action);
-                                                              }];
-        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * action) {
-                                                                 //响应事件
-                                                                 NSLog(@"action = %@", action);
-                                                             }];
-        [messageAlert addAction:defaultAction];
-        [messageAlert addAction:cancelAction];
-        UIViewController *view = [[[UIApplication sharedApplication] keyWindow] visibleViewController];
-        [view presentViewController:messageAlert animated:YES completion:nil];
-    });
+    //解析json字符串，暂时这么写wky
+    //此处‘,’分隔符危险，当内容中含有‘,’就GG
+
+    NSArray *array = [receiverStr componentsSeparatedByString:@","]; //从字符,中分隔成2个元素的数组
+    NSLog(@"array:%@",array[3]); //
+
+    NSArray *array1 = [array[3] componentsSeparatedByString:@":"]; //从字符:中分隔成2个元素的数组
+    NSLog(@"array1:%@",array1[1]); //
+    
+    NSArray *array2 = [array1[1] componentsSeparatedByString:@"\""]; //从字符"中分隔成2个元素的数组
+    NSLog(@"array2:%@",array2[1]); //
+  
+    NSString *content = array2[1];
+    
+    //获取消息类型：msg  or msgGroup
+    NSArray *type =[array[0] componentsSeparatedByString:@":"];
+    NSLog(@"type: %@",type[1]);
+    
+    //获取消息来源：from
+    NSArray * from = [array[1] componentsSeparatedByString:@":"];
+    NSArray * fromWithout = [from[1] componentsSeparatedByString:@"\""]; //去除掉""
+    NSLog(@"from:%@",fromWithout[1]);
+    
+    TLTextMessage *message1 = [[TLTextMessage alloc] init];
+    NSString *partnerID = fromWithout[1];//取得消息来自于谁
+    TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:partnerID];
+     message1.fromUser = user;
+     message1.text=content;
+    message1.userID =partnerID;
+    
+    //just for test for store to DB -->conv
+    if( [type[1] isEqualToString:@"\"msg\""]){
+        NSLog(@"single");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(_delegate){
+                NSLog(@"此时恰好在聊天界面中");
+                [_delegate receiveMessage:message1];
+            }else{
+                NSLog(@"代理不存在，即不在当前的聊天界面当中。");
+                TLChatBaseViewController *chatVC = [[TLChatBaseViewController alloc]init];
+                TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:partnerID];
+                
+                if (user == nil) {
+                    [TLUIUtility showAlertWithTitle:@"错误" message:@"出错了"];
+                    return;
+                }
+                [chatVC setPartner:user];
+                UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
+                [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:1];//这个1是我改的。
+                [vc setHidesBottomBarWhenPushed:YES];
+                [vc.navigationController pushViewController:chatVC animated:NO];
+                [vc setHidesBottomBarWhenPushed:NO];
+                [chatVC receivedMessage:message1];
+                [chatVC.navigationController popToRootViewControllerAnimated:NO];
+                
+            }
+            
+            
+        });
+    }else if([type[1] isEqualToString: @"\"msgGroup\""]){
+        NSLog(@"群聊");
+        //获取群聊内容，乱搞
+        NSArray *msgContent = [receiverStr componentsSeparatedByString:@"messageContent:"];
+        NSArray* msg=[msgContent[1] componentsSeparatedByString:@"}"];
+        NSLog(@"msg: %@",msg[0]);//msg[0] 即群聊的内容
+        
+        //获取群号码
+        NSArray *groupNum = [receiverStr componentsSeparatedByString:@"groupID:"];
+        NSArray * gNum = [groupNum[1] componentsSeparatedByString:@","];
+        NSLog(@"群号码是：%@",gNum[0]);
+        
+ 
+        //群聊暂时这么写
+        dispatch_async(dispatch_get_main_queue(), ^{
+       
+            TLChatBaseViewController *chatVC = [[TLChatBaseViewController alloc]init];
+            NSString *partnerID = gNum[0];
+            NSString *content = [NSString stringWithFormat:@"%@",msg[0]];
+            //群成员写死
+//            TLUser *user = (id<TLChatUserProtocol>)[TLUserHelper sharedHelper].user;
+            TLUser *user =[TLUserHelper sharedHelper].user;
+            TLUser *user1 = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"1002"];
+            TLUser *user2 = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"1005"];
+            TLUser *user3 = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"1007"];
+            NSMutableArray* groupMeb = [[NSMutableArray alloc]init];//群成员，目前为空，没人，应该服务端转发过来
+            [groupMeb addObject:user];
+            [groupMeb addObject:user1];
+            [groupMeb addObject:user2];
+            [groupMeb addObject:user3];
+            TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:partnerID];
+            TLDBGroupStore* groupStore = [[TLDBGroupStore alloc]init];
+            if (group == nil) {
+                //直接建群
+                NSLog(@"群是空的，我现在要开始新建一个群");
+                TLGroup* group = [[TLGroup alloc]init];
+                [group setGroupID:partnerID];
+                [group setUsers:groupMeb];
+                [group setGroupName:@"群聊"];//消息中未携带，写死
+                BOOL ok = [groupStore addGroup:group forUid:[TLUserHelper sharedHelper].userID];
+                if (!ok) {
+                    DDLogError(@"保存群数据到数据库失败!QWQ");
+                }
+                [group createGroupAvatarWithCompleteAction:nil];
+            }
+            
+            NSLog(@"debug");
+            [chatVC setPartner:group];
+            UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
+            [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [vc.navigationController pushViewController:chatVC animated:NO];
+            [vc setHidesBottomBarWhenPushed:NO];
+            TLTextMessage *message1 = [[TLTextMessage alloc] init];
+            message1.fromUser = user1;
+            message1.userID = user1.userID;
+            message1.text=content;
+            NSLog(@"debug2");
+            [chatVC receivedMessage:message1];
+            
+        });
+    }
+    
+    [self.socket readDataWithTimeout:-1 tag:0];
 
 }
 

@@ -7,10 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TLMessage.h"
+//设置代理协议，改变收到信息时的页面
+@protocol receiveDelegate <NSObject>
+
+//定义一个协议函数
+-(void) receiveMessage:(TLMessage *)message;
+
+@end
 
 @interface MessageTrans : NSObject
 
 @property (nonatomic, copy) void(^chatContentSendMessage)(NSString *message);
+
+
+
 
 + (MessageTrans *)sharedInstance;
 
@@ -27,5 +38,11 @@
  @param message NSString
  */
 - (void)sendMessageWithString:(NSString *)message;
+
+//定义一个代理对象
+//代理对象会执行协议函数
+
+
+@property(assign,nonatomic) id<receiveDelegate> delegate;
 
 @end

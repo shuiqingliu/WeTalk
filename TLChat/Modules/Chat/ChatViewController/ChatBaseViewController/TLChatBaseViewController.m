@@ -20,6 +20,10 @@
 {
     [super loadView];
     
+    //wky
+    [[MessageTrans sharedInstance] setDelegate:self];
+    //
+    
     [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatBar];
     
@@ -48,6 +52,7 @@
     [super viewWillDisappear:animated];
     [[TLAudioPlayer sharedAudioPlayer] stopPlayingAudio];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 }
 
 - (void)dealloc

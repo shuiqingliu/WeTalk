@@ -26,6 +26,7 @@ BOOL networkError;
     else{
         NSLog(@"设置网络错误失败,不显示图标");
     }
+   
     [self.messageDisplayView addMessage:message];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.messageDisplayView scrollToBottomWithAnimation:YES];

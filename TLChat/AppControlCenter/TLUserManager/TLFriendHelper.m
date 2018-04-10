@@ -48,8 +48,12 @@ static TLFriendHelper *friendHelper = nil;
             NSLog(@"%@",group.groupName);
             NSLog(@"TLHelper###########");
         }
+//        for(TLUser* user in _friendsData){
+//            NSLog(@"shite:");
+//            NSLog(@"%@",user.userID);
+//        }
 
-        
+    
         
         // 初始化标签数据
         self.tagsData = [[NSMutableArray alloc] init];

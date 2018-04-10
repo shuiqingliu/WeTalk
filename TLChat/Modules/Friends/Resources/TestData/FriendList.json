@@ -1,6 +1,6 @@
 [
     {
-        "userID" : "u1001",
+        "userID" : "1001",
         "username" : "limin-qinghou",
         "nikeName" : "李敏宝宝",
         "avatarURL" : "http://a.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=9766f7d6cf3d70cf4cafa20bc8ecfd38/00e93901213fb80e93b4c43830d12f2eb83894fc.jpg",
@@ -20,7 +20,7 @@
         },
     },
     {
-        "userID" : "u1002",
+        "userID" : "1002",
         "username" : "qingliu",
         "nikeName" : "qingliu",
         "avatarURL" : "http://c.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=7a21fa60a918972ba36f08ccd6fd57b1/35a85edf8db1cb13e363fa67df54564e92584bb8.jpg",
@@ -41,7 +41,7 @@
         },
     },
     {
-        "userID" : "u1003",
+        "userID" : "1003",
         "username" : "zhangzongtian",
         "nikeName" : "张总",
         "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=e4ac7f21bb0e7bec238f0be71f1e9500/472309f790529822afa352edd4ca7bcb0a46d408.jpg",
@@ -61,7 +61,7 @@
         },
     },
     {
-        "userID" : "u1004",
+        "userID" : "1004",
         "username" : "xuejie",
         "nikeName" : "学姐",
         "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=811f2b9ca5cc7cd9fa783cdf09310d07/54fbb2fb43166d2262fa25e5402309f79052d235.jpg",
@@ -81,7 +81,7 @@
         },
     },
     {
-        "userID" : "u1005",
+        "userID" : "1005",
         "username" : "kaishen",
         "nikeName" : "",
         "avatarURL" : "http://f.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=ceb4ac363f12b31bc739c52fb6281a42/cc11728b4710b91275c5c68fc5fdfc03924522be.jpg",
@@ -102,11 +102,11 @@
         },
     },
     {
-        "userID" : "u1006",
+        "userID" : "1006",
         "username" : "kaiyu",
-        "nikeName" : "开宇大佬",
+        "nikeName" : "开宇",
         "avatarURL" : "http://d.hiphotos.baidu.com/zhidao/wh%3D600%2C800/sign=b67b74ca4110b912bf94fef8f3cdd03b/9a504fc2d56285359eb7e15096ef76c6a7ef636f.jpg",
-        "remarkName" : "开宇大佬",
+        "remarkName" : "开宇",
         "detailInfo": {
             "location" : "山西 大同",
             "phoneNumber" : "18888888888",
@@ -122,7 +122,7 @@
         },
     },
     {
-        "userID" : "u1007",
+        "userID" : "1007",
         "username" : "biancheng",
         "nikeName" : "小贝",
         "avatarURL" : "http://tx.haiqq.com/uploads/allimg/150323/1513261b8-0.jpg",

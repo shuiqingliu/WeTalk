@@ -33,6 +33,9 @@
 #import "TLGroup+CreateAvatar.h"
 #import "TLDBGroupStore.h"
 #import "TLLaunchManager.h"
+
+#import "MessageKit.h"
+#import "MessageTrans.h"
 @interface reselectMebViewController ()
 @property (nonatomic, strong) UILabel *footerLabel;
 

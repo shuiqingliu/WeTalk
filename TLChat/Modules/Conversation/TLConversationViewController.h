@@ -17,4 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray *data;
 
+//实现receiveDelegate代理协议
+-(void) receiveMessage:(TLMessage *)message;
+
 @end

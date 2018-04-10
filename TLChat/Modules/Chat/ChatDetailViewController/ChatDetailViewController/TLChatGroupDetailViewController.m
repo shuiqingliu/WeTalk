@@ -24,6 +24,8 @@
 #import "TLGroupNameViewController.h"
 
 #import "TLLaunchManager.h"
+#import "MessageKit.h"
+#import "MessageTrans.h"
 
 #define     TAG_EMPTY_CHAT_REC      1001
 
@@ -177,6 +179,24 @@
         NSLog(@"#######&*&*&*&*&*&*#####");
     }
     
+    
+    //给服务端发送到接口：向群里拉人
+    //格式{'uid'：'xxx'，'gname'，'xxx'， 'mem'：['xxx'， 'xxx'， ...]}
+    
+    NSMutableString* userIDs = [[NSMutableString alloc]init];
+    [userIDs appendString:@"["];
+    for(TLUser *user in reselectedUsers){
+        [userIDs appendString:user.userID];
+        [userIDs appendString:@","];
+        
+    }
+    [userIDs deleteCharactersInRange:NSMakeRange(userIDs.length-1, 1)];
+    [userIDs appendString:@"]"];
+    //   {'uid'：'xxx'，'gname'，'xxx'， 'mem'：['xxx'， 'xxx'， ...]}
+    NSString* text =[ [NSString alloc]initWithFormat:@"{uid:%@,gid:%@,mem:%@}",[TLUserHelper sharedHelper].userID,_group.groupID,userIDs];
+    MessageKit *createGroupMessage = [[MessageKit alloc]initWithParament:@"createGroup" from:[TLUserHelper sharedHelper].userID to:@"createGroup_server" content:text];
+    NSString *createGroupMsg = [createGroupMessage getJsonData];
+    [[MessageTrans sharedInstance] sendMessageWithString:createGroupMsg];
 
     
     //新建Chat

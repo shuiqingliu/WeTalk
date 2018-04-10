@@ -2,7 +2,7 @@
 //  TLTextMessage.h
 //  TLChat
 //
-//  Created by libokun on 16/3/28.
+//  Created by  on 16/3/28.
 //  Copyright © 2017年 iOS Team. All rights reserved.
 //
 

@@ -34,6 +34,7 @@ static TLMessageManager *messageManager;
     }
     else {      // 存储到conversation
         ok = [self addConversationByMessage:message];
+        NSLog(@"存到conversation 成功");
         if (!ok) {
             DDLogError(@"存储Conversation到DB失败");
         }

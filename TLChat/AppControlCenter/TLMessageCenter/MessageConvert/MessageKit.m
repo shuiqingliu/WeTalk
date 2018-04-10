@@ -28,7 +28,9 @@
 
 - (NSString*)getMessageKit:(NSString *)receivedMsg{
     //TODO  read json data
-    return @"";
+    //temp by wky
+    return [self content];
+    
 }
 
 - (NSString*)formatDate{

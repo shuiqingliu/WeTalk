@@ -16,9 +16,15 @@
 #import "MessageKit.h"
 #import "MessageTrans.h"
 
+#import "TLDBGroupStore.h"
+#import "TLDBGroupSQL.h"
+#import "TLGroup.h"
+
 @implementation TLChatBaseViewController (ChatBar)
 
 #pragma mark - # Public Methods
+
+
 - (void)loadKeyboard
 {
     [self.emojiKeyboard setKeyboardDelegate:self];
@@ -98,6 +104,11 @@
     [self.view layoutIfNeeded];
 }
 
+-(void) receiveMessage:(TLMessage *)message{
+    [self receivedMessage:message];
+}
+
+
 #pragma mark - Delegate
 //MARK: TLChatBarDelegate
 // 发送文本消息
@@ -106,29 +117,84 @@
     TLTextMessage *message = [[TLTextMessage alloc] init];
     message.text = text;
     [self sendMessage:message];
+    
     NSString *userID = [[TLUserHelper sharedHelper]userID];
-    MessageKit *chatMessage = [[MessageKit alloc]initWithParament:@"msg" from:userID to:[self.partner chat_userID] content:text];
-    NSString *chatMsg = [chatMessage getJsonData];
-    [[MessageTrans sharedInstance] sendMessageWithString:chatMsg];
+    //单聊
+    if ([self.partner chat_userType] == TLChatUserTypeUser) {
+        MessageKit *chatMessage = [[MessageKit alloc]initWithParament:@"msg" from:userID to:[self.partner chat_userID] content:text];
+        NSString *chatMsg = [chatMessage getJsonData];
+        [[MessageTrans sharedInstance] sendMessageWithString:chatMsg];
+    }
+    //群聊
+    else{
+        
+        NSMutableArray *data = [[NSMutableArray alloc]init];
+        
+        TLDBGroupStore* groupStore = [[TLDBGroupStore alloc]init];
+        
+        data = [groupStore groupMembersForUid:userID andGid:[self.partner chat_userID]];
+        
+        NSMutableString* userIDs = [[NSMutableString alloc]init];
+        [userIDs appendString:@"["];
+        for(TLUser *user in data){
+            if(user.userID!=userID){
+                NSLog(@"ID:%@",user.userID);
+                [userIDs appendString:user.userID];
+
+                [userIDs appendString:@","];
+            }
+        }
+        [userIDs deleteCharactersInRange:NSMakeRange(userIDs.length-1, 1)];
+        
+        [userIDs appendString:@"]"];
+        NSLog(@"%@",userIDs);
+        //向Message发送的字符串，待服务端解析
+        //NSString * sendText = [[NSString alloc]init];
+        
+        NSString* sendText =[ [NSString alloc]initWithFormat:@"{groupMembers:%@,messageContent:%@}",userIDs,text];
+        NSLog(@"%@",sendText);
+        
+        //发送OOOOOOPS
+        MessageKit *chatMessage = [[MessageKit alloc]initWithParament:@"msgGroup" from:userID to:[self.partner chat_userID] content:sendText];
+        NSString *chatMsg = [chatMessage getJsonData];
+        [[MessageTrans sharedInstance] sendMessageWithString:chatMsg];
+    
+    }
+
+    
+    
+    //此部分只负责在发送人界面进行显示
     //注释掉发送文字的
- // if ([self.partner chat_userType] == TLChatUserTypeUser) {
+  if ([self.partner chat_userType] == TLChatUserTypeUser) {
+
 //        TLTextMessage *message1 = [[TLTextMessage alloc] init];
 //        message1.fromUser = self.partner;
-//        message1.text = text;
-//        [self receivedMessage:message1];
-//    }
+//        //message1.text = text;
+//        //message1.text = getMessageKit:text;
+//        //message1.text=[chatMessage getMessageKit:text];
+//       [self receivedMessage:message1];
+      
+      
+       
+    }
 //    else {
 //        for (id<TLChatUserProtocol> user in [self.partner groupMembers]) {
 //            TLTextMessage *message1 = [[TLTextMessage alloc] init];
 //            message1.friendID = [user chat_userID];
 //            message1.fromUser = user;
-//            message1.text = text;
-//            [self receivedMessage:message1];
+////            message1.text = text;
+//            message1.text = @"sb";
+//           // [self receivedMessage:message1];
 //        }
 //    }
-  }
+//    //wky 发送群消息
+//  else{
+//      TLTextMessage *message2 = [[TLTextMessage alloc]init];
+//
+//  }
 
 
+}
 
 // 发送文件消息
 - (void)chatBar:(TLChatBar *)chatBar sendFile:(NSString *)fileName
