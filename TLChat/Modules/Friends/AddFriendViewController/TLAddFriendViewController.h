@@ -9,6 +9,10 @@
 #import "TLTableViewController.h"
 
 @interface TLAddFriendViewController : TLTableViewController
-
+{
+    UILabel *_addFriend;
+    UITextField *_tfAddFriend;
+    UIButton *_btAddFriend;
+}
 
 @end

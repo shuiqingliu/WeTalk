@@ -155,9 +155,10 @@ didWriteDataWithTag:(long)tag {
     NSString *partnerID = fromWithout[1];//取得消息来自于谁
     TLUser *user = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:partnerID];
      message1.fromUser = user;
+    message1.friendID = partnerID;
      message1.text=content;
     message1.userID =partnerID;
-    
+     
     //just for test for store to DB -->conv
     if( [type[1] isEqualToString:@"\"msg\""]){
         NSLog(@"single");
@@ -175,6 +176,8 @@ didWriteDataWithTag:(long)tag {
                     return;
                 }
                 [chatVC setPartner:user];
+//                NSString* chat_par  = [chatVC partnerID];
+                
                 UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
                 [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:1];//这个1是我改的。
                 [vc setHidesBottomBarWhenPushed:YES];
@@ -189,64 +192,77 @@ didWriteDataWithTag:(long)tag {
         });
     }else if([type[1] isEqualToString: @"\"msgGroup\""]){
         NSLog(@"群聊");
-        //获取群聊内容，乱搞
+//        获取群聊内容，乱搞
         NSArray *msgContent = [receiverStr componentsSeparatedByString:@"messageContent:"];
         NSArray* msg=[msgContent[1] componentsSeparatedByString:@"}"];
         NSLog(@"msg: %@",msg[0]);//msg[0] 即群聊的内容
-        
+
         //获取群号码
         NSArray *groupNum = [receiverStr componentsSeparatedByString:@"groupID:"];
         NSArray * gNum = [groupNum[1] componentsSeparatedByString:@","];
         NSLog(@"群号码是：%@",gNum[0]);
-        
- 
+
+
+        //获取群成员列表 + 上文fromWithout[1]
+        NSArray* left= [receiverStr componentsSeparatedByString:@"["];
+        NSArray* right = [left[1] componentsSeparatedByString:@"]"];
+        NSArray* mebs = [right[0] componentsSeparatedByString:@","];
+        for(NSString* m in mebs){
+            NSLog(@"%@",m); //m是群成员列表当中的字符串
+        }
+
+        NSString *partnerID = gNum[0];//群号
+        NSString *content = [NSString stringWithFormat:@"%@",msg[0]];
+        //群成员
+        //TLUser *user = (id<TLChatUserProtocol>)[TLUserHelper sharedHelper].user;
+
+        NSMutableArray* groupMeb = [[NSMutableArray alloc]init];//群成员，目前为空，没人，应该服务端转发过来
+        for(NSString* m in mebs){
+            TLUser *user1 =[[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:m];
+            [groupMeb addObject:user1];
+
+        }
+        [groupMeb addObject:user];
+
+
+
+        TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:partnerID];
+        TLDBGroupStore* groupStore = [[TLDBGroupStore alloc]init];
+        if (group == nil) {
+            //直接建群
+            NSLog(@"群是空的，我现在要开始新建一个群");
+            TLGroup* group = [[TLGroup alloc]init];
+            [group setGroupID:partnerID];
+            [group setUsers:groupMeb];
+            [group setGroupName:@"群聊"];//消息中未携带，写死
+            BOOL ok = [groupStore addGroup:group forUid:[TLUserHelper sharedHelper].userID];
+            if (!ok) {
+                DDLogError(@"保存群数据到数据库失败!QWQ");
+            }
+            [group createGroupAvatarWithCompleteAction:nil];
+        }
+        TLTextMessage *message2 = [[TLTextMessage alloc] init];
+        message2.fromUser =(id<TLChatUserProtocol>) user;//
+        //            message2.partnerType = message.partnerType;
+        message2.friendID = [user chat_userID];
+        //message1.userID = user.userID;
+        //message1.groupID = group.groupID;
+        message2.text=content;
+        NSLog(@"debug2");
+
         //群聊暂时这么写
         dispatch_async(dispatch_get_main_queue(), ^{
-       
-            TLChatBaseViewController *chatVC = [[TLChatBaseViewController alloc]init];
-            NSString *partnerID = gNum[0];
-            NSString *content = [NSString stringWithFormat:@"%@",msg[0]];
-            //群成员写死
-//            TLUser *user = (id<TLChatUserProtocol>)[TLUserHelper sharedHelper].user;
-            TLUser *user =[TLUserHelper sharedHelper].user;
-            TLUser *user1 = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"1002"];
-            TLUser *user2 = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"1005"];
-            TLUser *user3 = [[TLFriendHelper sharedFriendHelper] getFriendInfoByUserID:@"1007"];
-            NSMutableArray* groupMeb = [[NSMutableArray alloc]init];//群成员，目前为空，没人，应该服务端转发过来
-            [groupMeb addObject:user];
-            [groupMeb addObject:user1];
-            [groupMeb addObject:user2];
-            [groupMeb addObject:user3];
-            TLGroup *group = [[TLFriendHelper sharedFriendHelper] getGroupInfoByGroupID:partnerID];
-            TLDBGroupStore* groupStore = [[TLDBGroupStore alloc]init];
-            if (group == nil) {
-                //直接建群
-                NSLog(@"群是空的，我现在要开始新建一个群");
-                TLGroup* group = [[TLGroup alloc]init];
-                [group setGroupID:partnerID];
-                [group setUsers:groupMeb];
-                [group setGroupName:@"群聊"];//消息中未携带，写死
-                BOOL ok = [groupStore addGroup:group forUid:[TLUserHelper sharedHelper].userID];
-                if (!ok) {
-                    DDLogError(@"保存群数据到数据库失败!QWQ");
-                }
-                [group createGroupAvatarWithCompleteAction:nil];
-            }
             
-            NSLog(@"debug");
-            [chatVC setPartner:group];
-            UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
-            [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
-            [vc setHidesBottomBarWhenPushed:YES];
-            [vc.navigationController pushViewController:chatVC animated:NO];
-            [vc setHidesBottomBarWhenPushed:NO];
-            TLTextMessage *message1 = [[TLTextMessage alloc] init];
-            message1.fromUser = user1;
-            message1.userID = user1.userID;
-            message1.text=content;
-            NSLog(@"debug2");
-            [chatVC receivedMessage:message1];
-            
+                TLChatBaseViewController* chatVC = [[TLChatBaseViewController alloc]init];
+                [chatVC setPartner:group];
+                UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
+                [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:1];
+                [vc setHidesBottomBarWhenPushed:YES];
+                [vc.navigationController pushViewController:chatVC animated:NO];
+                [vc setHidesBottomBarWhenPushed:NO];
+                [chatVC receivedMessage:message2];
+                [vc.navigationController popViewControllerAnimated:NO];
+        
         });
     }
     

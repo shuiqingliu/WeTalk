@@ -15,6 +15,9 @@
 
 /// 用户ID
 @property (nonatomic, strong) NSString *userID;
+///好友ID
+@property (nonatomic, strong) NSString *friendID;
+
 
 /// 用户名
 @property (nonatomic, strong) NSString *username;

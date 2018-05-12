@@ -157,6 +157,7 @@
         //发送OOOOOOPS
         MessageKit *chatMessage = [[MessageKit alloc]initWithParament:@"msgGroup" from:userID to:[self.partner chat_userID] content:sendText];
         NSString *chatMsg = [chatMessage getJsonData];
+        
         [[MessageTrans sharedInstance] sendMessageWithString:chatMsg];
     
     }

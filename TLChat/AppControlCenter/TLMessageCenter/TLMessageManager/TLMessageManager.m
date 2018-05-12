@@ -28,6 +28,17 @@ static TLMessageManager *messageManager;
             success:(void (^)(TLMessage *))success
             failure:(void (^)(TLMessage *))failure
 {
+   //测试
+    if(message == nil)NSLog(@"message is nil");
+    if(message.messageID == nil)NSLog(@"message.id  is nil");
+    if(message.userID == nil)NSLog(@"message.userID is nil");
+    if(message.userID != nil){
+        NSLog(@"userID is:%@",message.userID);
+    }
+    if(message.friendID==nil)NSLog(@"friend id is nil");
+    if(message.groupID == nil)NSLog(@"group id  is nil");
+    
+    
     BOOL ok = [self.messageStore addMessage:message];
     if (!ok) {
         DDLogError(@"存储Message到DB失败");

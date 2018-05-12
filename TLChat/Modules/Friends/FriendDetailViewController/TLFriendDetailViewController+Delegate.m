@@ -14,6 +14,8 @@
 #import "TLFriendDetailAlbumCell.h"
 #import "NSFileManager+TLChat.h"
 
+#import "TLDBFriendStore.h"
+
 @implementation TLFriendDetailViewController (Delegate)
 
 #pragma mark - Private Methods -
@@ -64,6 +66,7 @@
 - (void)infoButtonCellClicked:(TLInfo *)info
 {
     if ([info.title isEqualToString:@"发消息"]) {
+        NSLog(@"点击了发消息按钮");
         TLChatViewController *chatVC = [[TLChatViewController alloc] init];
         if ([self.navigationController findViewController:@"TLChatViewController"]) {
             if ([[chatVC.partner chat_userID] isEqualToString:self.user.userID]) {
@@ -81,6 +84,7 @@
         }
         else {
             [chatVC setPartner:self.user];
+            NSLog(@"当前选中好友为：%@",self.user.friendID);
             UIViewController *vc = [[TLLaunchManager sharedInstance].rootVC childViewControllerAtIndex:0];
             [[TLLaunchManager sharedInstance].rootVC setSelectedIndex:0];
             [vc setHidesBottomBarWhenPushed:YES];
@@ -90,9 +94,20 @@
             [vc setHidesBottomBarWhenPushed:NO];
         }
     }
-    else {
-        [super infoButtonCellClicked:info];
+    else if ([info.title isEqualToString:@"删除好友"]) {
+        NSLog(@"点击了删除好友按钮");
+        UIAlertView *alView1 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认删除好友？" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alView1 show];
+        TLDBFriendStore *friendStore = [[TLDBFriendStore alloc]init];
+        NSString *fidToDelete = self.user.userID;
+        
+        NSLog(@"要删除的好友ID：%@",fidToDelete);
+        //
+        //
+        //@-@在此处添加向服务器发送删除好友消息 代码
     }
+    
+    
 }
 
 //MARK: TLFriendDetailUserCellDelegate

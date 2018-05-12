@@ -289,6 +289,7 @@
 		E9C7A5A6200A04BF00800F4B /* SetMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C7A5A5200A04BE00800F4B /* SetMailViewController.m */; };
 		E9C7A5A9200AF88600800F4B /* SetPhoneNumberController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C7A5A8200AF88600800F4B /* SetPhoneNumberController.m */; };
 		E9C7A5AD200B083B00800F4B /* TLGroupNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C7A5AC200B083B00800F4B /* TLGroupNameViewController.m */; };
+		E9EE2BF82085E5F200F41C32 /* MyInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = E9EE2BF72085E5F200F41C32 /* MyInfo.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -906,6 +907,7 @@
 		E9C7A5A8200AF88600800F4B /* SetPhoneNumberController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetPhoneNumberController.m; sourceTree = "<group>"; };
 		E9C7A5AB200B083B00800F4B /* TLGroupNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLGroupNameViewController.h; sourceTree = "<group>"; };
 		E9C7A5AC200B083B00800F4B /* TLGroupNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLGroupNameViewController.m; sourceTree = "<group>"; };
+		E9EE2BF72085E5F200F41C32 /* MyInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MyInfo.json; sourceTree = "<group>"; };
 		EC8E3734808E2F6791D3B19B /* libPods-TLChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TLChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47069788539839E1FB073F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2442,6 +2444,7 @@
 		C2D7CA7B1F72470400648CED /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				E9EE2BF72085E5F200F41C32 /* MyInfo.json */,
 				C2D7CA7C1F72470400648CED /* FriendGroupList.json */,
 				C2D7CA7D1F72470400648CED /* FriendList.json */,
 			);
@@ -3138,6 +3141,7 @@
 				C2D7CB971F72470400648CED /* FriendList.json in Resources */,
 				C2D7CB4C1F72470400648CED /* Common.xcassets in Resources */,
 				C2D7CB491F72470400648CED /* Chat.xcassets in Resources */,
+				E9EE2BF82085E5F200F41C32 /* MyInfo.json in Resources */,
 				C2D7CB951F72470400648CED /* Friends.xcassets in Resources */,
 				C2D7CB961F72470400648CED /* FriendGroupList.json in Resources */,
 				C2D7CB6F1F72470400648CED /* Discover.xcassets in Resources */,

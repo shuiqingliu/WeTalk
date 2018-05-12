@@ -116,6 +116,9 @@
         NSLog(@"邮箱修改成功！");
         UIAlertView *alView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"验证成功，邮箱修改成功！" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
         [alView show];
+        //@-@ 更改邮箱
+        //点击确认按钮后，向服务器发送邮箱修改消息(setMail,uid,newMail)
+        //服务器确认修改成功后刷新在个人信息界面
     }
     
     

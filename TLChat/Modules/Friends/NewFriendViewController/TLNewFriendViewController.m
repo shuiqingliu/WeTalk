@@ -29,7 +29,7 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setTableHeaderView:self.searchController.searchBar];
     
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"添加朋友" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"添加个牛逼朋友" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonDown:)];
     [self.navigationItem setRightBarButtonItem:rightBarButton];
     
     [self registerCellClass];
