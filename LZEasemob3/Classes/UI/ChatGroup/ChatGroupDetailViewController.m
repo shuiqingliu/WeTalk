@@ -229,14 +229,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (self.occupantType == GroupOccupantTypeOwner)
-    {
-        return 7;
-    }
-    else
-    {
-        return 6;
-    }
+//    if (self.occupantType == GroupOccupantTypeOwner)
+//    {
+//        return 7;
+//    }
+//    else
+//    {
+//        return 6;
+//    }
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -252,17 +253,20 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:self.scrollView];
     }
-    else if (indexPath.row == 1)
-    {
-        cell.textLabel.text = NSLocalizedString(@"group.id", @"group ID");
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.detailTextLabel.text = _chatGroup.groupId;
-    }
+//    else if (indexPath.row == 1)
+//    {
+//        cell.textLabel.text = NSLocalizedString(@"group.id", @"group ID");
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//        cell.detailTextLabel.text = _chatGroup.groupId;
+//    }
     else if (indexPath.row == 2)
     {
         cell.textLabel.text = NSLocalizedString(@"group.occupantCount", @"members count");
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i / %i", (int)[_chatGroup.occupants count], (int)_chatGroup.setting.maxUsersCount];
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i / %i", (int)[_chatGroup.occupants count], (int)_chatGroup.setting.maxUsersCount];
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", (int)[_chatGroup.occupants count]];
+        
     }
     else if (indexPath.row == 3)
     {
