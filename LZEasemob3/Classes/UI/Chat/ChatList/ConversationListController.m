@@ -63,7 +63,7 @@
     [self tableViewDidTriggerHeaderRefresh];
     
     [self.view addSubview:self.searchBar];
-    self.tableView.frame = CGRectMake(0, self.searchBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height);
+    self.tableView.frame = CGRectMake(0, self.searchBar.frame.size.height + 15 , self.view.frame.size.width, self.view.frame.size.height - self.searchBar.frame.size.height);
     [self networkStateView];
     
     [self searchController];
