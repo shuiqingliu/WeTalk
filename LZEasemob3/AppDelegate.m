@@ -38,7 +38,7 @@
 
 @end
 
-#define EaseMobAppKey @"nacker#lzeasemob"
+#define EaseMobAppKey @"1195180516228979#wetalk"
 #define EMSDKApnsCertName @"lzeasemob"
 
 @implementation AppDelegate
@@ -62,6 +62,15 @@ didFinishLaunchingWithOptions:launchOptions
                       appkey:EaseMobAppKey
                 apnsCertName:EMSDKApnsCertName
                  otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
+    
+//    EMError *error = [[EMClient sharedClient] registerWithUsername:@"zzt" password:@"111111"];
+//    EMError *error1 = [[EMClient sharedClient] registerWithUsername:@"lm" password:@"111111"];
+//    EMError *error2 = [[EMClient sharedClient] registerWithUsername:@"wky" password:@"111111"];
+//    EMError *error3 = [[EMClient sharedClient] registerWithUsername:@"fk" password:@"111111"];
+//    EMError *error4 = [[EMClient sharedClient] registerWithUsername:@"ljl" password:@"111111"];
+//    if (error==nil) {
+//        NSLog(@"注册成功");
+//    }
     
     [self.window makeKeyAndVisible];
     
