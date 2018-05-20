@@ -2447,7 +2447,6 @@
 				62A1C3F81DBF9A8F00BB5FA6 /* Sources */,
 				62A1C3F91DBF9A8F00BB5FA6 /* Frameworks */,
 				62A1C3FA1DBF9A8F00BB5FA6 /* Resources */,
-				F4F09E88CE96001B70BD49FE /* [CP] Embed Pods Frameworks */,
 				C70A1712361618511E4C0A64 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -2467,8 +2466,6 @@
 				62A1C4111DBF9A8F00BB5FA6 /* Sources */,
 				62A1C4121DBF9A8F00BB5FA6 /* Frameworks */,
 				62A1C4131DBF9A8F00BB5FA6 /* Resources */,
-				2A0DC429B1DA2C1116673CAE /* [CP] Embed Pods Frameworks */,
-				AA9EA8B6EECD6F2EE5D4C28C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2488,8 +2485,6 @@
 				62A1C41C1DBF9A8F00BB5FA6 /* Sources */,
 				62A1C41D1DBF9A8F00BB5FA6 /* Frameworks */,
 				62A1C41E1DBF9A8F00BB5FA6 /* Resources */,
-				00898ADF2BA0F3DE37C5AC5E /* [CP] Embed Pods Frameworks */,
-				84E1991DCF296CF2CEC9E97D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2650,66 +2645,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00898ADF2BA0F3DE37C5AC5E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LZEasemob3UITests/Pods-LZEasemob3UITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2A0DC429B1DA2C1116673CAE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LZEasemob3Tests/Pods-LZEasemob3Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		84E1991DCF296CF2CEC9E97D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LZEasemob3UITests/Pods-LZEasemob3UITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA9EA8B6EECD6F2EE5D4C28C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LZEasemob3Tests/Pods-LZEasemob3Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AFAFC9349643B22129D53540 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2739,7 +2674,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2762,21 +2697,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F4F09E88CE96001B70BD49FE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LZEasemob3/Pods-LZEasemob3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F54B7CD10B3BABB171F8C9C2 /* [CP] Check Pods Manifest.lock */ = {
