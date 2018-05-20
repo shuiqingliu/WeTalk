@@ -74,8 +74,8 @@
 //    [self.navigationItem setLeftBarButtonItem:backItem];
     
     [self.view addSubview:self.textField];
-    [self.view addSubview:self.textView];
-    [self.view addSubview:self.switchView];
+//    [self.view addSubview:self.textView];
+//    [self.view addSubview:self.switchView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -246,7 +246,14 @@
     NSString *messageStr = [NSString stringWithFormat:NSLocalizedString(@"group.somebodyInvite", @"%@ invite you to join groups \'%@\'"), username, self.textField.text];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         EMError *error = nil;
-        EMGroup *group = [[EMClient sharedClient].groupManager createGroupWithSubject:self.textField.text description:self.textView.text invitees:source message:messageStr setting:setting error:&error];
+//        EMGroup *group = [[EMClient sharedClient].groupManager createGroupWithSubject:self.textField.text description:self.textView.text invitees:source message:messageStr setting:setting error:&error];
+        
+        
+        EMGroup *group = [[EMClient sharedClient].groupManager createGroupWithSubject:self.textField.text description:nil invitees:source message:messageStr setting:setting error:&error];
+        
+        
+        
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf hideHud];
             if (group && !error) {
