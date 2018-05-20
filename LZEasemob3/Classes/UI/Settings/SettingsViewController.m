@@ -26,7 +26,8 @@
 #if DEMO_CALL == 1
 #import "CallViewController.h"
 #import "ChatDemoHelper.h"
-#import "CallResolutionViewController.h"
+//zzt-test
+//#import "CallResolutionViewController.h"
 #endif
 
 @interface SettingsViewController ()
@@ -167,7 +168,7 @@
 
 #ifdef REDPACKET_AVALABLE
     if (indexPath.section == 0) {
-        cell.textLabel.text = @"零钱";
+        cell.textLabel.text = @"";
     }else if (indexPath.section == 1) {
 #else
     if (indexPath.section == 0) {
@@ -183,12 +184,13 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 2)
         {
-            cell.textLabel.text = NSLocalizedString(@"title.buddyBlock", @"Black List");
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+           // cell.textLabel.text = NSLocalizedString(@"title.buddyBlock", @"Black List");
+           // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 3)
         {
-            cell.textLabel.text = NSLocalizedString(@"title.debug", @"Debug");
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            //zzt-test
+//            cell.textLabel.text = NSLocalizedString(@"title.debug", @"");
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 4){
             cell.textLabel.text = NSLocalizedString(@"setting.deleteConWhenLeave", @"Delete conversation when leave a group");
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -201,26 +203,28 @@
             cell.textLabel.text = NSLocalizedString(@"setting.personalInfo", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 7) {
-            cell.textLabel.text = NSLocalizedString(@"setting.showCallInfo", nil);
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            self.showCallInfoSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.showCallInfoSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.showCallInfoSwitch.frame.size.height) / 2, self.showCallInfoSwitch.frame.size.width, self.showCallInfoSwitch.frame.size.height);
-            [cell.contentView addSubview:self.showCallInfoSwitch];
+//            cell.textLabel.text = NSLocalizedString(@"setting.showCallInfo", nil);
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            self.showCallInfoSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.showCallInfoSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.showCallInfoSwitch.frame.size.height) / 2, self.showCallInfoSwitch.frame.size.width, self.showCallInfoSwitch.frame.size.height);
+//            [cell.contentView addSubview:self.showCallInfoSwitch];
         } else if (indexPath.row == 8) {
-            cell.textLabel.text = NSLocalizedString(@"setting.sortbyservertime", @"Sort message by server time");
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            self.sortMethodSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.sortMethodSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.sortMethodSwitch.frame.size.height) / 2, self.sortMethodSwitch.frame.size.width, self.sortMethodSwitch.frame.size.height);
-            [cell.contentView addSubview:self.sortMethodSwitch];
+            //zzt-test 删掉设置视频通话码率
+//            cell.textLabel.text = NSLocalizedString(@"setting.sortbyservertime", @"Sort message by server time");
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            self.sortMethodSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.sortMethodSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.sortMethodSwitch.frame.size.height) / 2, self.sortMethodSwitch.frame.size.width, self.sortMethodSwitch.frame.size.height);
+//            [cell.contentView addSubview:self.sortMethodSwitch];
         } else if (indexPath.row == 9) {
-            cell.textLabel.text = NSLocalizedString(@"setting.setBitrate", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            cell.textLabel.text = NSLocalizedString(@"setting.setBitrate", “nil”);
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 10) {
             cell.textLabel.text = NSLocalizedString(@"setting.callPush", nil);
             cell.accessoryType = UITableViewCellAccessoryNone;
             self.callPushSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.callPushSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.callPushSwitch.frame.size.height) / 2, self.callPushSwitch.frame.size.width, self.callPushSwitch.frame.size.height);
             [cell.contentView addSubview:self.callPushSwitch];
         } else if (indexPath.row == 11) {
-            cell.textLabel.text = NSLocalizedString(@"setting.callResolution", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            //zzt-test
+//            cell.textLabel.text = NSLocalizedString(@"setting.callResolution", nil);
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
     
@@ -244,13 +248,15 @@
     }
     else if (indexPath.row == 2)
     {
-        BlackListViewController *blackController = [[BlackListViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:blackController animated:YES];
+        //zzt-test
+//        BlackListViewController *blackController = [[BlackListViewController alloc] initWithNibName:nil bundle:nil];
+//        [self.navigationController pushViewController:blackController animated:YES];
     }
     else if (indexPath.row == 3)
     {
-        DebugViewController *debugController = [[DebugViewController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:debugController animated:YES];
+        //zzt-test
+//        DebugViewController *debugController = [[DebugViewController alloc] initWithStyle:UITableViewStylePlain];
+//        [self.navigationController pushViewController:debugController animated:YES];
     } else if (indexPath.row == 5) {
         EditNicknameViewController *editName = [[EditNicknameViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:editName animated:YES];
@@ -259,17 +265,19 @@
         [self.navigationController pushViewController:userProfile animated:YES];
         
     } else if (indexPath.row == 9) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"setting.setBitrate", @"Set Bitrate") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
-        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-        
-        UITextField *textField = [alert textFieldAtIndex:0];
-        EMCallOptions *options = [[EMClient sharedClient].callManager getCallOptions];
-        textField.text = [NSString stringWithFormat:@"%ld", options.videoKbps];
-        
-        [alert show];
+        //zzt-test
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"setting.setBitrate", @"Set Bitrate") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
+//        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+//
+//        UITextField *textField = [alert textFieldAtIndex:0];
+//        EMCallOptions *options = [[EMClient sharedClient].callManager getCallOptions];
+//        textField.text = [NSString stringWithFormat:@"%ld", options.videoKbps];
+//
+//        [alert show];
     } else if (indexPath.row == 11) {
-        CallResolutionViewController *resoulutionController = [[CallResolutionViewController alloc] init];
-        [self.navigationController pushViewController:resoulutionController animated:YES];
+        //zzt-test
+//        CallResolutionViewController *resoulutionController = [[CallResolutionViewController alloc] init];
+//        [self.navigationController pushViewController:resoulutionController animated:YES];
     }
 }
 

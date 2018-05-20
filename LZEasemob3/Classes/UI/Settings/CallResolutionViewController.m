@@ -30,80 +30,80 @@
 #endif
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
+//
+//#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#if DEMO_CALL == 1
+//    return 4;
+//#endif
+//
+//    return 0;
+//}
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#if DEMO_CALL == 1
-    return 4;
-#endif
-    
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    
-    // Configure the cell...
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = @"默认 (352 * 288)";
-            break;
-        case 1:
-            cell.textLabel.text = @"352 * 288";
-            break;
-        case 2:
-            cell.textLabel.text = @"640 * 480";
-            break;
-        case 3:
-            cell.textLabel.text = @"1280 * 720";
-            break;
-        case 4:
-            cell.textLabel.text = @"1920 * 1080";
-            break;
-            
-        default:
-            break;
-    }
-    
-    if (indexPath.row == self.selectedIndexPath.row) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (!self.selectedIndexPath || self.selectedIndexPath.row != indexPath.row) {
-        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:self.selectedIndexPath];
-        oldCell.accessoryType = UITableViewCellAccessoryNone;
-        
-        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
-        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
-        EMCallVideoResolution resolution = (EMCallVideoResolution)indexPath.row;
-        EMCallOptions *options = [[EMClient sharedClient].callManager getCallOptions];
-        options.videoResolution = resolution;
-        [ChatDemoHelper updateCallOptions];
-    }
-    
-    self.selectedIndexPath = indexPath;
-}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+//
+//    // Configure the cell...
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
+//
+//    switch (indexPath.row) {
+//        case 0:
+//            cell.textLabel.text = @"默认 (352 * 288)";
+//            break;
+//        case 1:
+//            cell.textLabel.text = @"352 * 288";
+//            break;
+//        case 2:
+//            cell.textLabel.text = @"640 * 480";
+//            break;
+//        case 3:
+//            cell.textLabel.text = @"1280 * 720";
+//            break;
+//        case 4:
+//            cell.textLabel.text = @"1920 * 1080";
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    if (indexPath.row == self.selectedIndexPath.row) {
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//    } else {
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
+//
+//    return cell;
+//}
+//zzt-test
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (!self.selectedIndexPath || self.selectedIndexPath.row != indexPath.row) {
+//        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:self.selectedIndexPath];
+//        oldCell.accessoryType = UITableViewCellAccessoryNone;
+//
+//        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+//        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+//
+//        EMCallVideoResolution resolution = (EMCallVideoResolution)indexPath.row;
+//        EMCallOptions *options = [[EMClient sharedClient].callManager getCallOptions];
+//        options.videoResolution = resolution;
+//        [ChatDemoHelper updateCallOptions];
+//    }
+//
+//    self.selectedIndexPath = indexPath;
+//}
 
 @end

@@ -15,7 +15,7 @@
 //#import "EaseChineseToPinyin.h"
 #import "ChatViewController.h"
 #import "RobotListViewController.h"
-#import "ChatroomListViewController.h"
+//#import "ChatroomListViewController.h"
 #import "AddFriendViewController.h"
 #import "ApplyViewController.h"
 #import "EMSearchBar.h"
@@ -150,7 +150,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 3;
+        return 2;
     }
     
     return [[self.dataArray objectAtIndex:(section - 1)] count];
@@ -182,8 +182,8 @@
             cell.titleLabel.text = NSLocalizedString(@"title.group", @"Group");
         }
         else if (indexPath.row == 2) {
-            cell.avatarView.image = [UIImage imageNamed:@"EaseUIResource.bundle/group"];
-            cell.titleLabel.text = NSLocalizedString(@"title.chatroomlist",@"chatroom list");
+//            cell.avatarView.image = [UIImage imageNamed:@"EaseUIResource.bundle/group"];
+//            cell.titleLabel.text = NSLocalizedString(@"title.chatroomlist",@"chatroom list");
         }
         else if (indexPath.row == 3) {
             cell.avatarView.image = [UIImage imageNamed:@"EaseUIResource.bundle/group"];
@@ -276,8 +276,8 @@
         }
         else if (row == 2)
         {
-            ChatroomListViewController *controller = [[ChatroomListViewController alloc] initWithStyle:UITableViewStylePlain];
-            [self.navigationController pushViewController:controller animated:YES];
+//            ChatroomListViewController *controller = [[ChatroomListViewController alloc] initWithStyle:UITableViewStylePlain];
+//            [self.navigationController pushViewController:controller animated:YES];
         }
         else if (row == 3) {
             RobotListViewController *robot = [[RobotListViewController alloc] init];
