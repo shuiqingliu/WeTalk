@@ -147,10 +147,10 @@
 #endif
     
 #if DEMO_CALL == 1
-    return 12;
+    return 4;
 #endif
 
-    return 9;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,58 +174,27 @@
     if (indexPath.section == 0) {
 #endif
         if (indexPath.row == 0) {
+            //自动登录
             cell.textLabel.text = NSLocalizedString(@"setting.autoLogin", @"automatic login");
             cell.accessoryType = UITableViewCellAccessoryNone;
             self.autoLoginSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.autoLoginSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.autoLoginSwitch.frame.size.height) / 2, self.autoLoginSwitch.frame.size.width, self.autoLoginSwitch.frame.size.height);
             [cell.contentView addSubview:self.autoLoginSwitch];
         } else if (indexPath.row == 1)
         {
+            //推送设置
             cell.textLabel.text = NSLocalizedString(@"title.apnsSetting", @"Apns Settings");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 2)
         {
-           // cell.textLabel.text = NSLocalizedString(@"title.buddyBlock", @"Black List");
-           // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 3)
-        {
-            //zzt-test
-//            cell.textLabel.text = NSLocalizedString(@"title.debug", @"");
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 4){
-            cell.textLabel.text = NSLocalizedString(@"setting.deleteConWhenLeave", @"Delete conversation when leave a group");
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            self.delConversationSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.delConversationSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.delConversationSwitch.frame.size.height) / 2, self.delConversationSwitch.frame.size.width, self.delConversationSwitch.frame.size.height);
-            [cell.contentView addSubview:self.delConversationSwitch];
-        } else if (indexPath.row == 5) {
+            //推送昵称
             cell.textLabel.text = NSLocalizedString(@"setting.iospushname", @"iOS push nickname");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 6) {
+        } else if (indexPath.row == 3)
+        {
+//            个人信息
             cell.textLabel.text = NSLocalizedString(@"setting.personalInfo", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 7) {
-//            cell.textLabel.text = NSLocalizedString(@"setting.showCallInfo", nil);
-//            cell.accessoryType = UITableViewCellAccessoryNone;
-//            self.showCallInfoSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.showCallInfoSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.showCallInfoSwitch.frame.size.height) / 2, self.showCallInfoSwitch.frame.size.width, self.showCallInfoSwitch.frame.size.height);
-//            [cell.contentView addSubview:self.showCallInfoSwitch];
-        } else if (indexPath.row == 8) {
-            //zzt-test 删掉设置视频通话码率
-//            cell.textLabel.text = NSLocalizedString(@"setting.sortbyservertime", @"Sort message by server time");
-//            cell.accessoryType = UITableViewCellAccessoryNone;
-//            self.sortMethodSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.sortMethodSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.sortMethodSwitch.frame.size.height) / 2, self.sortMethodSwitch.frame.size.width, self.sortMethodSwitch.frame.size.height);
-//            [cell.contentView addSubview:self.sortMethodSwitch];
-        } else if (indexPath.row == 9) {
-//            cell.textLabel.text = NSLocalizedString(@"setting.setBitrate", “nil”);
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 10) {
-            cell.textLabel.text = NSLocalizedString(@"setting.callPush", nil);
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            self.callPushSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.callPushSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.callPushSwitch.frame.size.height) / 2, self.callPushSwitch.frame.size.width, self.callPushSwitch.frame.size.height);
-            [cell.contentView addSubview:self.callPushSwitch];
-        } else if (indexPath.row == 11) {
-            //zzt-test
-//            cell.textLabel.text = NSLocalizedString(@"setting.callResolution", nil);
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
+        } 
     }
     
     return cell;
@@ -248,37 +217,26 @@
     }
     else if (indexPath.row == 2)
     {
-        //zzt-test
-//        BlackListViewController *blackController = [[BlackListViewController alloc] initWithNibName:nil bundle:nil];
-//        [self.navigationController pushViewController:blackController animated:YES];
+        EditNicknameViewController *editName = [[EditNicknameViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:editName animated:YES];
     }
     else if (indexPath.row == 3)
     {
-        //zzt-test
-//        DebugViewController *debugController = [[DebugViewController alloc] initWithStyle:UITableViewStylePlain];
-//        [self.navigationController pushViewController:debugController animated:YES];
-    } else if (indexPath.row == 5) {
-        EditNicknameViewController *editName = [[EditNicknameViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:editName animated:YES];
-    } else if (indexPath.row == 6){
+//        个人信息
         UserProfileEditViewController *userProfile = [[UserProfileEditViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:userProfile animated:YES];
         
-    } else if (indexPath.row == 9) {
-        //zzt-test
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"setting.setBitrate", @"Set Bitrate") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
-//        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-//
-//        UITextField *textField = [alert textFieldAtIndex:0];
-//        EMCallOptions *options = [[EMClient sharedClient].callManager getCallOptions];
-//        textField.text = [NSString stringWithFormat:@"%ld", options.videoKbps];
-//
-//        [alert show];
-    } else if (indexPath.row == 11) {
-        //zzt-test
-//        CallResolutionViewController *resoulutionController = [[CallResolutionViewController alloc] init];
-//        [self.navigationController pushViewController:resoulutionController animated:YES];
+        
     }
+//    else if (indexPath.row == 5) {
+//
+//    } else if (indexPath.row == 6){
+//
+//    } else if (indexPath.row == 9) {
+//
+//    } else if (indexPath.row == 11) {
+//
+//    }
 }
 
 //弹出提示的代理方法
