@@ -75,7 +75,7 @@
     
     [self.view addSubview:self.textField];
     [self.view addSubview:self.textView];
-    [self.view addSubview:self.switchView];
+//    [self.view addSubview:self.switchView];
 }
 
 - (void)didReceiveMemoryWarning
