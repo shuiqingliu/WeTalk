@@ -74,7 +74,11 @@
 //    [self.navigationItem setLeftBarButtonItem:backItem];
     
     [self.view addSubview:self.textField];
+//<<<<<<< HEAD
 //    [self.view addSubview:self.textView];
+//=======
+//    [self.view addSubview:self.textView];
+//>>>>>>> 0787d0f9111bf3aa59c130651af81e16496a7842
 //    [self.view addSubview:self.switchView];
 }
 

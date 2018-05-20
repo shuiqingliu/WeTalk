@@ -1619,7 +1619,7 @@
                  model = (id<IMessageModel>)obj;
                  if ([model.messageId isEqualToString:message.messageId])
                  {
-                     model.message.isReadAcked = YES;
+                     model.message.isReadAcked = NO;
                      isHave = YES;
                      *stop = YES;
                  }
