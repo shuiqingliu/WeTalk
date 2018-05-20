@@ -330,6 +330,12 @@
 		79939814D7A27087C758AF7A /* libPods-LZEasemob3UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56435C45020977F219B44C2C /* libPods-LZEasemob3UITests.a */; };
 		7E1AC9600538E3430768236B /* libPods-LZEasemob3Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A16C8A4084868AF8EF22756 /* libPods-LZEasemob3Tests.a */; };
 		DF030C02A567ED5A1761350D /* libPods-LZEasemob3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5EBA924A0F058D4D2A1FF0 /* libPods-LZEasemob3.a */; };
+		E9DD828820B1D561001DB7F6 /* EditPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD828720B1D561001DB7F6 /* EditPhoneViewController.m */; };
+		E9DD828920B1D561001DB7F6 /* EditPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD828720B1D561001DB7F6 /* EditPhoneViewController.m */; };
+		E9DD828A20B1D561001DB7F6 /* EditPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD828720B1D561001DB7F6 /* EditPhoneViewController.m */; };
+		E9DD828D20B1DFD4001DB7F6 /* EditEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD828C20B1DFD4001DB7F6 /* EditEmailViewController.m */; };
+		E9DD828E20B1DFD4001DB7F6 /* EditEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD828C20B1DFD4001DB7F6 /* EditEmailViewController.m */; };
+		E9DD828F20B1DFD4001DB7F6 /* EditEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD828C20B1DFD4001DB7F6 /* EditEmailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -951,6 +957,10 @@
 		CE5EBA924A0F058D4D2A1FF0 /* libPods-LZEasemob3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LZEasemob3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BF0CB1FFD0575463280269 /* Pods-LZEasemob3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZEasemob3.release.xcconfig"; path = "Pods/Target Support Files/Pods-LZEasemob3/Pods-LZEasemob3.release.xcconfig"; sourceTree = "<group>"; };
 		D853E6D2D42FE8CB75717A12 /* Pods-LZEasemob3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZEasemob3UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LZEasemob3UITests/Pods-LZEasemob3UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E9DD828620B1D561001DB7F6 /* EditPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPhoneViewController.h; sourceTree = "<group>"; };
+		E9DD828720B1D561001DB7F6 /* EditPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPhoneViewController.m; sourceTree = "<group>"; };
+		E9DD828B20B1DFD4001DB7F6 /* EditEmailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditEmailViewController.h; sourceTree = "<group>"; };
+		E9DD828C20B1DFD4001DB7F6 /* EditEmailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditEmailViewController.m; sourceTree = "<group>"; };
 		F5177954D5AFA7B860B12D97 /* Pods-LZEasemob3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LZEasemob3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LZEasemob3Tests/Pods-LZEasemob3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1776,6 +1786,10 @@
 				6205E2C91DF5319B00E57FC9 /* SettingsViewController.m */,
 				6205E2CA1DF5319B00E57FC9 /* UserProfileEditViewController.h */,
 				6205E2CB1DF5319B00E57FC9 /* UserProfileEditViewController.m */,
+				E9DD828620B1D561001DB7F6 /* EditPhoneViewController.h */,
+				E9DD828720B1D561001DB7F6 /* EditPhoneViewController.m */,
+				E9DD828B20B1DFD4001DB7F6 /* EditEmailViewController.h */,
+				E9DD828C20B1DFD4001DB7F6 /* EditEmailViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -2851,6 +2865,7 @@
 				62A1C8901DBF9ADA00BB5FA6 /* LZTimeTool.m in Sources */,
 				62A1C8911DBF9ADA00BB5FA6 /* LZUIHelper.m in Sources */,
 				6205E2ED1DF5319C00E57FC9 /* UserProfileManager.m in Sources */,
+				E9DD828D20B1DFD4001DB7F6 /* EditEmailViewController.m in Sources */,
 				62A1C8B01DBF9ADA00BB5FA6 /* SDBaseRefreshView.m in Sources */,
 				6205E2D61DF5319B00E57FC9 /* ChatGroupDetailViewController.m in Sources */,
 				6205E2EB1DF5319C00E57FC9 /* RealtimeSearchUtil.m in Sources */,
@@ -2926,6 +2941,7 @@
 				6205E1C11DF5272300E57FC9 /* EaseEmotionEscape.m in Sources */,
 				6205E1D61DF5272300E57FC9 /* EaseBubbleView.m in Sources */,
 				6205E1A21DF5272300E57FC9 /* UIImageView+EMHighlightedWebCache.m in Sources */,
+				E9DD828820B1D561001DB7F6 /* EditPhoneViewController.m in Sources */,
 				62A1C8B31DBF9ADA00BB5FA6 /* DFPlainGridImageView.m in Sources */,
 				6205E1C21DF5272300E57FC9 /* EaseEmotionManager.m in Sources */,
 				6205E2171DF5302600E57FC9 /* UIResponder+Router.m in Sources */,
@@ -2972,6 +2988,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				62A1C41A1DBF9A8F00BB5FA6 /* LZEasemob3Tests.m in Sources */,
+				E9DD828E20B1DFD4001DB7F6 /* EditEmailViewController.m in Sources */,
+				E9DD828920B1D561001DB7F6 /* EditPhoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2980,6 +2998,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				62A1C4251DBF9A8F00BB5FA6 /* LZEasemob3UITests.m in Sources */,
+				E9DD828F20B1DFD4001DB7F6 /* EditEmailViewController.m in Sources */,
+				E9DD828A20B1D561001DB7F6 /* EditPhoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,8 @@
 "password" = "Password";
 "username" = "Username";
 "confirmpassword"="Confirm password";
+"userEmail" = "Email";
+"userPhone" = "Phone";
 
 "sure" = "OK";
 "yes" = "YES";
@@ -325,16 +327,33 @@
 "setting.uploading" = "uploading...";
 "setting.uploadSuccess" = "uploaded successfully";
 "setting.uploadFail" = "uploaded failed";
+//"setting.editName" = "Edit NickName";
 "setting.editName" = "Edit NickName";
-"setting.inputName" = "Please input nickname";
+"setting.editEmail" = "Edit Email";
+"setting.editPhone" = "Edit Phone";
+//"setting.inputName" = "Please input nickname";
+"setting.inputName" = "Please input new email";
+"setting.inputNewPhone" = "Please input new phone";
+"setting.inputNewEmail" = "Please input new email";
 "setting.saveName" = "Save Nickname";
-"setting.namenotempty" = "Name cannot be empty";
+
+"setting.saveEmail" = "Save Email";
+"setting.savePhone" = "Save Phone";
+//"setting.namenotempty" = "Name cannot be empty";
+"setting.namenotempty" = "New nickname cannot be empty";
+"setting.phonenotempty" = "New phone cannot be empty";
+"setting.phonetoolong" = "New phone is too long";
+
+"setting.emailnotempty" = "New email cannot be empty";
+"setting.emailtoolong" = "New email is too long";
 "setting.personalInfo" = "Profile";
 "setting.setBitrate" = "Set Bitrate";
 "setting.setBitrateTips" = "Set Bitrate should be 150-1000";
 "setting.personalInfoUpload" = "Profile Image";
 "setting.edittips" = "After setting this nickname, chat with the iOS client demo project, iOS will display this nickname is not a EaseMob ID, if the other party to use the Android client this setting is not effective";
-"setting.iospushname" = "iOS push nickname";
+//"setting.iospushname" = "iOS push nickname";
+"setting.editemail" = "Edit Email";
+"setting.editPhone" = "Edit Phone";
 "setting.useIp" = "Use IP";
 "setting.deleteConWhenLeave" = "Delete conversation when leave a group";
 "setting.showCallInfo" = "Show video call info";

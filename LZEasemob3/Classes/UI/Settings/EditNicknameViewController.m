@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"setting.editName", @"Edit NickName");
+    self.title = NSLocalizedString(@"setting.editEmail", @"Edit Email");
     
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
@@ -50,7 +50,7 @@
 {
     _nickTextField = [[UITextField alloc] initWithFrame:CGRectMake((CGRectGetWidth(self.view.bounds)-kTextFieldWidth)/2, 20.0, kTextFieldWidth, kTextFieldHeight)];
     _nickTextField.layer.cornerRadius = 5.0;
-    _nickTextField.placeholder = NSLocalizedString(@"setting.inputName", @"Please input nickname");
+    _nickTextField.placeholder = NSLocalizedString(@"setting.inputName", @"Please input new email");
     _nickTextField.font = [UIFont systemFontOfSize:15];
     _nickTextField.backgroundColor = [UIColor whiteColor];
     _nickTextField.returnKeyType = UIReturnKeyNext;
@@ -76,7 +76,7 @@
     _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _saveButton.frame = CGRectMake((CGRectGetWidth(self.view.bounds)-kTextFieldWidth)/2, CGRectGetMaxY(_nickTextField.frame) + 10.0, kTextFieldWidth, kButtonHeight);
     [_saveButton setBackgroundColor:RGBACOLOR(0x00, 0xac, 0xff, 1)];
-    [_saveButton setTitle:NSLocalizedString(@"setting.saveName", @"Save Nickname") forState:UIControlStateNormal];
+    [_saveButton setTitle:NSLocalizedString(@"setting.saveName", @"Save Email") forState:UIControlStateNormal];
     [_saveButton addTarget:self action:@selector(doSave:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveButton];
 }
@@ -124,7 +124,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [EMAlertView showAlertWithTitle:NSLocalizedString(@"prompt", @"Prompt")
-                                message:NSLocalizedString(@"setting.namenotempty", @"Name cannot be empty")
+                                message:NSLocalizedString(@"setting.namenotempty", @"New email cannot be empty")
                         completionBlock:nil
                       cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
                       otherButtonTitles:nil];

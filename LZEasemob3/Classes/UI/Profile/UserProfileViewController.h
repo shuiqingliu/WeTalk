@@ -15,7 +15,11 @@
 @interface UserProfileViewController : UITableViewController
 
 @property (strong, nonatomic, readonly) NSString *username;
+@property (strong, nonatomic, readonly) NSString *userEmail;
+@property (strong, nonatomic, readonly) NSString *userPhone;
 
 - (instancetype)initWithUsername:(NSString *)username;
+- (instancetype)initWithUserEmail:(NSString *)userEmail;
+- (instancetype)initWithUserPhone:(NSString *)userPhone;
 
 @end

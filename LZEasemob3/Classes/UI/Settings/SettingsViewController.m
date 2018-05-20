@@ -18,6 +18,8 @@
 #import "DebugViewController.h"
 #import "EditNicknameViewController.h"
 #import "UserProfileEditViewController.h"
+#import "EditPhoneViewController.h"
+#import "EditEmailViewController.h"
 
 #if DEMO_CALL == 1
 #import "CallViewController.h"
@@ -147,10 +149,10 @@
 #endif
     
 #if DEMO_CALL == 1
-    return 4;
+    return 5;
 #endif
 
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,14 +189,21 @@
         } else if (indexPath.row == 2)
         {
             //推送昵称
-            cell.textLabel.text = NSLocalizedString(@"setting.iospushname", @"iOS push nickname");
+//            cell.textLabel.text = NSLocalizedString(@"setting.iospushname", @"Email and Phone");
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.textLabel.text = NSLocalizedString(@"setting.editemail", @"Edit Email");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 3)
         {
-//            个人信息
+//            更改电话号码
+            cell.textLabel.text = NSLocalizedString(@"setting.editPhone", @"Edit Phone");
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else if (indexPath.row == 4)
+        {
+            //            个人信息
             cell.textLabel.text = NSLocalizedString(@"setting.personalInfo", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } 
+        }
     }
     
     return cell;
@@ -217,16 +226,23 @@
     }
     else if (indexPath.row == 2)
     {
-        EditNicknameViewController *editName = [[EditNicknameViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:editName animated:YES];
+//        EditNicknameViewController *editName = [[EditNicknameViewController alloc] initWithNibName:nil bundle:nil];
+//        [self.navigationController pushViewController:editName animated:YES];
+        
+        EditEmailViewController *editEmail = [[EditEmailViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:editEmail animated:YES];
     }
     else if (indexPath.row == 3)
     {
 //        个人信息
+        EditPhoneViewController *editPhone = [[EditPhoneViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:editPhone animated:YES];
+    }
+    else if (indexPath.row == 4)
+    {
+        //        个人信息
         UserProfileEditViewController *userProfile = [[UserProfileEditViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:userProfile animated:YES];
-        
-        
     }
 //    else if (indexPath.row == 5) {
 //

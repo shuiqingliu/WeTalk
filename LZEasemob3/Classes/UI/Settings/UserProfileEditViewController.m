@@ -95,7 +95,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,6 +120,12 @@
             cell.detailTextLabel.text = [[EMClient sharedClient] currentUsername];
         }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if (indexPath.row == 3) {
+        cell.textLabel.text = NSLocalizedString(@"userEmail", @"Email");
+        cell.detailTextLabel.text = @"myself@bupt.edu.cn";
+    } else if (indexPath.row == 4) {
+        cell.textLabel.text = NSLocalizedString(@"userPhone", @"Phone");
+        cell.detailTextLabel.text = @"18810543315";
     }
     return cell;
 }

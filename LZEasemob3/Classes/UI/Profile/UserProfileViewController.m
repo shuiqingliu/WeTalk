@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *usernameLabel;
+@property (strong, nonatomic) UILabel *userEmailLabel;
+@property (strong, nonatomic) UILabel *userPhoneLabel;
 
 @end
 
@@ -35,6 +37,24 @@
     }
     return self;
 
+}
+
+- (instancetype)initWithUserEmail:(NSString *)userEmail
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _userEmail = @"someone@bupt.edu.cn";
+    }
+    return self;
+}
+
+- (instancetype)initWithUserPhone:(NSString *)userPhone
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _userPhone = @"18810543315";
+    }
+    return self;
 }
 
 - (void)viewDidLoad
@@ -83,7 +103,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,6 +128,12 @@
             cell.detailTextLabel.text = _username;
         }
 //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if (indexPath.row == 3) {
+        cell.textLabel.text = NSLocalizedString(@"userEmail", @"Email");
+        cell.detailTextLabel.text = @"someone@bupt.edu.cn";
+    } else if (indexPath.row == 4) {
+        cell.textLabel.text = NSLocalizedString(@"userPhone", @"Phone");
+        cell.detailTextLabel.text = @"18810543315";
     }
     return cell;
 }
