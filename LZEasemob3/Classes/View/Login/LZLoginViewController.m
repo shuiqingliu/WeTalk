@@ -52,8 +52,8 @@
     [self.loginBtn addTarget:self action:@selector(doLogin) forControlEvents:UIControlEventTouchUpInside];
     
     
-    _usernameTextField.text = @"h18";
-    _passwordTextField.text = @"123456";
+    _usernameTextField.text = @"ljl";
+    _passwordTextField.text = @"111111";
 }
 
 //登陆账号

@@ -49,6 +49,9 @@
     UILongPressGestureRecognizer *_lpgr;
     NSMutableArray *_atTargets;
     
+    
+    UIDocumentInteractionController *_fileInteractionController;
+    
     dispatch_queue_t _messageQueue;
 }
 
@@ -785,6 +788,89 @@
     }
 }
 
+// add by martin:发送文件
+// 打开文件
+- (void)_fileMessageCellSelected:(id<IMessageModel>)model
+{
+    _scrollToBottomWhenAppear = NO;
+    EMFileMessageBody *body = (EMFileMessageBody*)model.message.body;
+    
+    //判断本地路径是否存在
+    NSString *localPath = [model.fileLocalPath length] > 0 ? model.fileLocalPath : body.localPath;
+    if ([localPath length] == 0) {
+        [self showHint:NSLocalizedString(@"message.fileFail", @"file for failure!")];
+        return;
+    }
+    
+    dispatch_block_t block = ^{
+        //发送已读回执
+        [self _sendHasReadResponseForMessages:@[model.message]
+                                       isRead:YES];
+        
+        int index = (int)[localPath rangeOfString:@"/" options:NSBackwardsSearch].location;;
+        NSString *dir = [localPath substringToIndex:index];
+        NSString *newLocalPath = [NSString stringWithFormat:@"%@/%@", dir, model.fileName];
+        
+        // 更改文件名
+        if (![[NSFileManager defaultManager] fileExistsAtPath:newLocalPath]) {
+            NSError *error = nil;
+            [[NSFileManager defaultManager] linkItemAtPath:localPath toPath:newLocalPath error:&error];
+        }
+        
+        [self openFileViewController:newLocalPath];
+    };
+    
+    if (body.downloadStatus == EMDownloadStatusSuccessed && [[NSFileManager defaultManager] fileExistsAtPath:localPath])
+    {
+        block();
+        return;
+    }
+    
+    [self showHudInView:self.view hint:@"文件下载中..."];
+    __weak EaseMessageViewController *weakSelf = self;
+    [[EMClient sharedClient].chatManager downloadMessageAttachment:model.message progress:nil completion:^(EMMessage *message, EMError *error) {
+        [weakSelf hideHud];
+        if (!error) {
+            block();
+        }else{
+            [weakSelf showHint:NSEaseLocalizedString(@"message.videoFail", @"video for failure!")];
+        }
+    }];
+}
+
+// 打开文件
+-(void)openFileViewController:(NSString *) file_url  {
+    
+    NSURL *file_URL = [NSURL fileURLWithPath:file_url];
+    
+    if (file_URL != nil) {
+        if (_fileInteractionController == nil) {
+            _fileInteractionController = [[UIDocumentInteractionController alloc] init];
+            
+            _fileInteractionController = [UIDocumentInteractionController interactionControllerWithURL:file_URL];
+            _fileInteractionController.delegate = self;
+            
+        }else {
+            _fileInteractionController.URL = file_URL;
+        }
+        
+        [_fileInteractionController presentPreviewAnimated:YES];
+    }
+}
+
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
+    return self;
+}
+
+- (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller {
+    return self.view;
+}
+
+- (CGRect)documentInteractionControllerRectForPreview:(UIDocumentInteractionController *)controller {
+    return self.view.frame;
+}
+
+
 #pragma mark - pivate data
 
 - (void)_loadMessagesBefore:(NSString*)messageId
@@ -1128,7 +1214,8 @@
         case EMMessageBodyTypeFile:
         {
             _scrollToBottomWhenAppear = NO;
-            [self showHint:@"Custom implementation!"];
+            [self _fileMessageCellSelected:model];
+//            [self showHint:@"Custom implementation!"];
         }
             break;
         default:
@@ -1426,6 +1513,47 @@
     [self.chatToolbar endEditing:YES];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_CALL object:@{@"chatter":self.conversation.conversationId, @"type":[NSNumber numberWithInt:1]}];
+}
+
+
+// add by martin:发送文件
+-(void)moreViewFileTransferAction:(EaseChatBarMoreView *)moreView{
+    
+    // 隐藏键盘
+    [self.chatToolbar endEditing:YES];
+    
+    // ios8+才支持icloud drive功能
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
+        //older than iOS 8 code here
+        NSLog(@"IOS8以上才支持icloud drive.");
+    } else {
+        //iOS 8 specific code here
+        NSArray *documentTypes = @[@"public.content", @"public.text", @"public.source-code ", @"public.image", @"public.audiovisual-content", @"com.adobe.pdf", @"com.apple.keynote.key", @"com.microsoft.word.doc", @"com.microsoft.excel.xls", @"com.microsoft.powerpoint.ppt"];
+        
+        UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:documentTypes inMode:UIDocumentPickerModeOpen];
+        documentPicker.delegate = self;
+        documentPicker.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:documentPicker animated:YES completion:nil];
+    }
+}
+
+// 选中icloud里的pdf文件
+- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
+    BOOL fileUrlAuthozied = [url startAccessingSecurityScopedResource];
+    if(fileUrlAuthozied){
+        NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
+        NSError *error;
+        
+        [fileCoordinator coordinateReadingItemAtURL:url options:0 error:&error byAccessor:^(NSURL *newURL) {
+            
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            [self sendFileMessageWithURL:newURL displayName:[[url path] lastPathComponent]];
+        }];
+        [url stopAccessingSecurityScopedResource];
+    }else{
+        //Error handling
+        
+    }
 }
 
 #pragma mark - EMLocationViewDelegate
@@ -1842,20 +1970,22 @@
     [self _sendMessage:message];
 }
 
-- (void)sendVideoMessageWithURL:(NSURL *)url
+- (void)sendFileMessageWithURL:(NSURL *)url displayName:(NSString*)displayName
 {
     id progress = nil;
     if (_dataSource && [_dataSource respondsToSelector:@selector(messageViewController:progressDelegateForMessageBodyType:)]) {
-        progress = [_dataSource messageViewController:self progressDelegateForMessageBodyType:EMMessageBodyTypeVideo];
+        progress = [_dataSource messageViewController:self progressDelegateForMessageBodyType:EMMessageBodyTypeFile];
     }
     else{
         progress = self;
     }
     
-    EMMessage *message = [EaseSDKHelper sendVideoMessageWithURL:url
-                                                           to:self.conversation.conversationId
-                                                  messageType:[self _messageTypeFromConversationType]
-                                                   messageExt:nil];
+    EMMessage *message = [EaseSDKHelper sendFileMessageWithURL:url
+                                                   displayName:displayName
+                                                            to:self.conversation.conversationId
+                                                   messageType:[self _messageTypeFromConversationType]
+                                                    messageExt:nil];
+    
     [self _sendMessage:message];
 }
 
